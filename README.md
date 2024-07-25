@@ -50,11 +50,12 @@ Event app that allows clubs and organizations to create and share events while a
             int id
             int club_id
             int event_id
+            string email
+            string encrypted_password
             string first_name
             string last_name
             string date_of_birth
             string club
-            string email
             string phone
             string address
             datetime created_at
