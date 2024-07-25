@@ -38,7 +38,6 @@ Event app that allows clubs and organizations to create and share events while a
         EVENT {
             int id
             int club_id
-            int event_id
             int venue_id
             string title
             string date
@@ -49,7 +48,6 @@ Event app that allows clubs and organizations to create and share events while a
         }
         ATTENDEE {
             int id
-            int club_id
             int event_id
             string email
             string encrypted_password
@@ -59,6 +57,7 @@ Event app that allows clubs and organizations to create and share events while a
             string club
             string phone
             string address
+            string club_affiliation
             datetime created_at
         }
 ```
