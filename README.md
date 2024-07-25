@@ -39,6 +39,7 @@ Event app that allows clubs and organizations to create and share events while a
             int id
             int club_id
             int event_id
+            int venue_id
             string title
             string date
             string description
