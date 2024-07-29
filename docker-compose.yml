@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  # create and setup postgresql database
+  db:
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_DB: training_test_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  # create and setup Flyway for managing migrations/seed-data
+  flyway:
+    image: flyway/flyway
+    command: -url=jdbc:postgresql://db/training_test_db -schemas=public -user=postgres
+      -password=password -connectRetries=5 migrate
+    volumes:
+      - ./db:/flyway/sql
+    depends_on:
+      - db
+
+volumes:
+  db:
