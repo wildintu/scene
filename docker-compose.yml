@@ -1,4 +1,4 @@
-version: '3'
+# version: '3'
 
 services:
 
@@ -9,7 +9,7 @@ services:
     ports:
       - 5435:5432
     environment:
-      POSTGRES_DB: training_test_db
+      POSTGRES_DB: scene_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
     volumes:
@@ -18,7 +18,7 @@ services:
   # create and setup Flyway for managing migrations/seed-data
   flyway:
     image: flyway/flyway
-    command: -url=jdbc:postgresql://db/training_test_db -schemas=public -user=postgres
+    command: -url=jdbc:postgresql://db/scene_db -schemas=public -user=postgres
       -password=password -connectRetries=5 migrate
     volumes:
       - ./db:/flyway/sql
