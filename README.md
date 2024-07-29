@@ -19,8 +19,11 @@ Event app that allows clubs and organizations to create and share events while a
             string email
             string encrypted_password
             string name
-            string address
             string phone
+            string address
+            string city
+            string state
+            int    zip
             string website
         }
         VENUE ||--o{ EVENT : hosts
@@ -28,8 +31,11 @@ Event app that allows clubs and organizations to create and share events while a
             int id
             int venue_id
             string name
-            string address
             string phone
+            string address
+            string city
+            string state
+            int    zip
             string email
             string website
             string description
@@ -38,7 +44,6 @@ Event app that allows clubs and organizations to create and share events while a
         EVENT {
             int id
             int club_id
-            int venue_id
             string title
             string date
             string description
@@ -54,10 +59,12 @@ Event app that allows clubs and organizations to create and share events while a
             string first_name
             string last_name
             string date_of_birth
-            string club
             string phone
             string address
-            string club_affiliation
+            string city
+            string state
+            int    zip
+            string club
             datetime created_at
         }
 ```
