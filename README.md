@@ -32,11 +32,11 @@ Event app that allows clubs and organizations to create and share events while a
             int venue_id
             string name
             string phone
+            string email
             string address
             string city
             string state
             int    zip
-            string email
             string website
             string description
         }
@@ -44,8 +44,9 @@ Event app that allows clubs and organizations to create and share events while a
         EVENT {
             int id
             int club_id
+            int venue_id
             string title
-            string date
+            string event_date
             string description
             string cost
             datetime created_at
