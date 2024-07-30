@@ -1,0 +1,1 @@
+INSERT INTO venue (venue_id, name, phone, email, address, city, state, zip, website, description) VALUES (01, 'The Ruff Spot', '444-444-4444', 'hello@trs.com', '11 Bark Dr', 'Birmingham', 'AL', 35205, 'www.theruffspot.com', 'Dog park with a full bar. Available for events!');

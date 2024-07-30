@@ -1,0 +1,1 @@
+INSERT INTO club (club_id, email, encrypted_password, name, phone, address, city, state, zip, website) VALUES (1, 'hello@udc.com', 'password',  'United Doberman Club', '555-555-5555', '22 Dobe St', 'Birmingham', 'AL', 35205, 'www.uniteddobermanclub.com');

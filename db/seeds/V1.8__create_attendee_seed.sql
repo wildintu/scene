@@ -1,0 +1,1 @@
+INSERT INTO attendee (event_id, email, encrypted_password, first_name, last_name, date_of_birth, phone, address, city, state, zip, club) VALUES (1, 'lexi.kwak@unosquare.com', 'password', 'Lexi', 'Kwak', '11/01/1986', '777-777-7777', '77 Dog Sport Lane', 'Birmingham', 'AL', 35205, 'United Doberman Club');
