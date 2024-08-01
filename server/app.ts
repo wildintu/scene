@@ -9,7 +9,7 @@ const app = express();
 // app.use(morgan('combined'));
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Home page')
+  res.send('Scene - Club Event App - Home')
 });
 
 export { app };
