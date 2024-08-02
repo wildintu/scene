@@ -25,5 +25,18 @@ services:
     depends_on:
       - db
 
+  # create and setup Express API container - creating your own image
+  api:
+    image: scene-api
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/app
+    environment:
+      DATABASE_URL: "postgresql://postgres:password@localhost:5432/scene_db?schema=public"
+
 volumes:
   db:

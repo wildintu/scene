@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "darwin-arm64", "linux-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model attendee {
+  id                 Int      @id @default(autoincrement())
+  event_id           Int?
+  email              String?  @db.VarChar
+  encrypted_password String?  @db.VarChar
+  first_name         String?  @db.VarChar
+  last_name          String?  @db.VarChar
+  date_of_birth      String?  @db.VarChar
+  phone              String?  @db.VarChar
+  address            String?  @db.VarChar
+  city               String?  @db.VarChar
+  state              String?  @db.VarChar
+  zip                Int?
+  club               String?  @db.VarChar
+  created_at         DateTime @default(now()) @db.Timestamp(6)
+}
+
+model club {
+  id                 Int     @id @default(autoincrement())
+  club_id            Int?
+  email              String? @db.VarChar
+  encrypted_password String? @db.VarChar
+  name               String? @db.VarChar
+  phone              String? @db.VarChar
+  address            String? @db.VarChar
+  city               String? @db.VarChar
+  state              String? @db.VarChar
+  zip                Int?
+  website            String? @db.VarChar
+}
+
+model event {
+  id          Int       @id @default(autoincrement())
+  club_id     Int?
+  venue_id    Int?
+  title       String?   @db.VarChar
+  event_date  String?   @db.VarChar
+  description String?   @db.VarChar
+  cost        String?   @db.VarChar
+  start_at    DateTime? @db.Timestamp(6)
+  end_at      DateTime? @db.Timestamp(6)
+}
+
+model flyway_schema_history {
+  installed_rank Int      @id(map: "flyway_schema_history_pk")
+  version        String?  @db.VarChar(50)
+  description    String   @db.VarChar(200)
+  type           String   @db.VarChar(20)
+  script         String   @db.VarChar(1000)
+  checksum       Int?
+  installed_by   String   @db.VarChar(100)
+  installed_on   DateTime @default(now()) @db.Timestamp(6)
+  execution_time Int
+  success        Boolean
+
+  @@index([success], map: "flyway_schema_history_s_idx")
+}
+
+model venue {
+  id          Int     @id @default(autoincrement())
+  venue_id    Int?
+  name        String? @db.VarChar
+  phone       String? @db.VarChar
+  email       String? @db.VarChar
+  address     String? @db.VarChar
+  city        String? @db.VarChar
+  state       String? @db.VarChar
+  zip         Int?
+  website     String? @db.VarChar
+  description String? @db.VarChar
+}
