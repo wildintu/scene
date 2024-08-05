@@ -36,7 +36,7 @@ services:
     volumes:
       - ./server:/app
     environment:
-      DATABASE_URL: "postgresql://postgres:password@localhost:5432/scene_db?schema=public"
+      DATABASE_URL: "postgresql://postgres:password@db:5432/scene_db?schema=public"
 
 volumes:
   db:
