@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', async (req: Request, res: Response) => {
-  res.send('Scene - Club Event App - Home')
+  res.send('Scene - app.ts - Home')
 });
 
 app.use('/club', club);

@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import clubService from '../services/club_service';
 
 async function clubsList(req: Request, res: Response) {
@@ -13,9 +13,27 @@ async function findClub(req: Request, res: Response) {
   res.json(clubSelected).status(200);
 }
 
+async function newClub(req: Request, res: Response, next: NextFunction) {
+  const user = await clubService.createClub(req.body);
+  res.json(user).status(200);
+};
+
+// async function updateUser(req, res, next) {
+//   const { id } = req.params;
+//   const user = await usersService.updateUser(id, req.body);
+//   res.json(user).status(200);
+// };
+
+// async function deleteUser(req, res) {
+//   const { id } = req.params;
+//   const user = await usersService.deleteUser(id);
+//   res.json(user).status(200);
+// };
+
 const clubController = {
   clubsList,
-  findClub
+  findClub,
+  newClub
 }
 
 export default clubController;
