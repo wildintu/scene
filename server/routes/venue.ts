@@ -15,4 +15,21 @@ const venue = express();
  */
 venue.route("/").get(venueController.venuesList);
 
+/**
+ * @swagger
+ * /venue/{id}:
+ *  get:
+ *    summary: Get a venue by ID
+ *    tags: [venue]
+ *    parameters:
+ *      - name: id
+ *        in: path
+ *        type: integer
+ *        description: The ID of the venue.
+ *    responses:
+ *      200:
+ *        description: Returns a single venue.
+ */
+venue.route("/:id").get(venueController.findVenue);
+
 export default venue;

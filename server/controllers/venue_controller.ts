@@ -7,8 +7,15 @@ async function venuesList(req: Request, res: Response) {
   console.log(allVenues)
 }
 
+async function findVenue(req: Request, res: Response) {
+  const { id } = req.params;
+  const venueSelected = await venueService.getVenue(id);
+  res.json(venueSelected).status(200);
+}
+
 const venueController = {
-  venuesList
+  venuesList,
+  findVenue
 }
 
 export default venueController;

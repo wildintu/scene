@@ -7,8 +7,15 @@ async function clubsList(req: Request, res: Response) {
   console.log(allClubs)
 }
 
+async function findClub(req: Request, res: Response) {
+  const { id } = req.params;
+  const clubSelected = await clubService.getClub(id);
+  res.json(clubSelected).status(200);
+}
+
 const clubController = {
-  clubsList
+  clubsList,
+  findClub
 }
 
 export default clubController;

@@ -1,7 +1,7 @@
 import express from 'express';
 import { Request, Response, NextFunction } from 'express';
 import club from './routes/club';
-import scene from './routes/event';
+import scene from './routes/scene';
 import venue from './routes/venue';
 import attendee from './routes/attendee';
 

@@ -5,8 +5,13 @@ async function getAttendees() {
   return await prisma.attendee.findMany();
 }
 
+async function getAttendee(attendeeId: string) {
+  return await prisma.attendee.findFirst({ where: { id: Number(attendeeId) } });
+}
+
 const attendeeService = {
-  getAttendees
+  getAttendees,
+  getAttendee
 }
 
 export default attendeeService;

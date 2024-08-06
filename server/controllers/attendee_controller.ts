@@ -7,8 +7,15 @@ async function attendeesList(req: Request, res: Response) {
   console.log(allAttendees)
 }
 
+async function findAttendee(req: Request, res: Response) {
+  const { id } = req.params;
+  const attendeeSelected = await attendeeService.getAttendee(id);
+  res.json(attendeeSelected).status(200);
+}
+
 const attendeeController = {
-  attendeesList
+  attendeesList,
+  findAttendee
 }
 
 export default attendeeController;

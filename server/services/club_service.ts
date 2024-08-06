@@ -5,8 +5,13 @@ async function getClubs() {
   return await prisma.club.findMany();
 }
 
+async function getClub(clubId: string) {
+  return await prisma.club.findFirst({ where: { id: Number(clubId) } });
+}
+
 const clubService = {
-  getClubs
+  getClubs,
+  getClub
 }
 
 export default clubService;
