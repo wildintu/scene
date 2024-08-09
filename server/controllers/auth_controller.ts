@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 
 async function loginClub(req: Request, res: Response, next: NextFunction) {
   const {email, password} = req.body;
-  const club  = await clubService.getClubByEmail(email);
+  const club: any  = await clubService.getClubByEmail(email);
   if (club) {
     const passwordsMatch = await bcrypt.compare(password, club.encrypted_password);
     if (passwordsMatch) {

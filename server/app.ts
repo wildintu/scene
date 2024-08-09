@@ -5,7 +5,7 @@ import scene from './routes/scene';
 import venue from './routes/venue';
 import attendee from './routes/attendee';
 import auth from './routes/auth';
-import { verifyTokenMiddleware } from './middleware/auth';
+import verifyTokenMiddleware from './middleware/auth';
 
 
 const app = express();

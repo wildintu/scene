@@ -1,0 +1,40 @@
+name: Verify Schema Update
+
+on:
+  workflow_run:
+    workflows: ["Verify Database"]
+    types:
+      - completed
+
+defaults:
+  run:
+    working-directory: ./server
+
+env:
+  DATABASE_URL: postgresql://postgres:password@localhost:5435/docker_test_db?schema=public
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: execute flyway in docker
+        run:  docker compose up -d
+      - name: Server Install
+        run:  npm i
+      - name: Prisma Pull
+        run:  npm run prisma:pull
+      - name: Prisma Generate
+        run:  npm run prisma:generate
+      - name: Check for modified snapshots
+        id:   snapshot-check
+        run:  echo ::set-output name=modified::$(if git status | grep "nothing to commit"; then echo "false"; else echo "true"; fi)
+      - name: Commit updated snapshots
+        if: steps.snapshot-check.outputs.modified == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Commit for snapshot update
+      - name: execute flyway in docker
+        run: docker compose down
