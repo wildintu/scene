@@ -4,6 +4,9 @@ import club from './routes/club';
 import scene from './routes/scene';
 import venue from './routes/venue';
 import attendee from './routes/attendee';
+import auth from './routes/auth';
+import { verifyTokenMiddleware } from './middleware/auth';
+
 
 const app = express();
 
@@ -13,6 +16,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', async (req: Request, res: Response) => {
   res.send('Scene - app.ts - Home')
 });
+
+app.use('/login', auth);
+app.use("*", verifyTokenMiddleware);
 
 app.use('/club', club);
 app.use('/venue', venue);
