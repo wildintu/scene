@@ -5,6 +5,7 @@
   "dependencies": {
     "@prisma/client": "^5.18.0",
     "@types/bcrypt": "^5.0.2",
+    "@types/jest": "^29.5.12",
     "@types/jsonwebtoken": "^9.0.6",
     "accepts": "^1.3.8",
     "array-flatten": "^1.1.1",
@@ -83,9 +84,9 @@
     "typescript": "^5.5.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.ts",
-    "ts": "npx ts-node index.ts"
+    "ts": "npx ts-node index.ts",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
