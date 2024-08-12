@@ -40,6 +40,15 @@ services:
       - ./server:/app
     environment:
       DATABASE_URL: "postgresql://postgres:password@db:5432/scene_db?schema=public"
+  
+  ui:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    volumes:
+      - ./ui:/src
+    ports:
+      - 5173:5173
 
 volumes:
   db:
