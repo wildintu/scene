@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 
 async function verifyTokenMiddleware(req: Request, res: Response, next: NextFunction) {
   if (process.env.NODE_ENV === 'test') {
