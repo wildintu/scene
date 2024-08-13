@@ -15,4 +15,15 @@ describe('ClubService', () => {
       expect(result).toEqual(clubs)
     })
   })
+
+  // describe('getClub', () => {
+  //   it('should return one club', async () => {
+  //     const club = [{ id }]
+  //     prismaMock.club = { findFirst: jest.fn().mockReturnValueOnce(club) }
+  //     const result = await clubService.getClub(id)
+  //     expect(prisma.club.findFirst).toHaveBeenCalledTimes(1)
+  //     expect(result).toEqual(club)
+  //   })
+  // })
+  
 })

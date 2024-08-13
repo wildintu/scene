@@ -49,6 +49,7 @@
     "iconv-lite": "^0.4.24",
     "inherits": "^2.0.4",
     "ipaddr.js": "^1.9.1",
+    "jest-junit": "^16.0.0",
     "jest-mock-extended": "^3.0.7",
     "jsonwebtoken": "^9.0.2",
     "media-typer": "^0.3.0",
@@ -99,7 +100,9 @@
   "scripts": {
     "dev": "nodemon server.ts",
     "ts": "npx ts-node server.ts",
-    "test": "jest"
+    "test": "jest",
+    "test:unit": "jest --testPathIgnorePatterns ./routes/ --ci --reporters=default --reporters=jest-junit",
+    "test:integration": "jest --config ./jest.integration.config.ts --testPathPattern ./routes/ --forceExit --ci --reporters=default --reporters=jest-junit"
   },
   "author": "",
   "license": "ISC",
