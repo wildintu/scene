@@ -9,7 +9,7 @@ import verifyTokenMiddleware from './middleware/auth';
 import cors from 'cors';
 
 
-const app = express();
+export const app = express();
 
 app.use(cors());
 app.use(express.json());
@@ -19,12 +19,10 @@ app.get('/', async (req: Request, res: Response) => {
   res.send('Scene - app.ts - Home')
 });
 
-app.use('/login', auth);
-app.use("*", verifyTokenMiddleware);
+// app.use('/login', auth);
+// app.use("*", verifyTokenMiddleware);
 
 app.use('/club', club);
 app.use('/venue', venue);
 app.use('/scene', scene);
 app.use('/attendee', attendee);
-
-export default app;
