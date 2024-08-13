@@ -3,8 +3,8 @@ name: Verify Server Unit Tests
 on:
   #pull_request:
   push:
-    paths:
-      - 'server/**'
+    # paths:
+    #   - 'server/**'
 
 defaults:
   run:
