@@ -2,7 +2,7 @@ import express from 'express';
 import { body, param, query } from "express-validator";
 import validationUtils from '../utils/validator';
 import clubController from '../controllers/club_controller';
-import clubService from '../services/club_service';
+import * as clubService from '../services/club_service';
 
 const club = express();
 

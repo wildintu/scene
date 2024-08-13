@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import clubService from '../services/club_service';
+import * as clubService from '../services/club_service';
 
 async function clubsList(req: Request, res: Response) {
   const allClubs = await clubService.getClubs();

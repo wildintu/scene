@@ -1,4 +1,4 @@
-import clubService from '../services/club_service';
+import * as clubService from '../services/club_service';
 import bcrypt from 'bcryptjs';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
