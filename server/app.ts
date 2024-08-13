@@ -6,10 +6,12 @@ import venue from './routes/venue';
 import attendee from './routes/attendee';
 import auth from './routes/auth';
 import verifyTokenMiddleware from './middleware/auth';
+import cors from 'cors';
 
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
