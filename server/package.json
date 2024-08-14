@@ -78,6 +78,7 @@
     "setprototypeof": "^1.2.0",
     "side-channel": "^1.0.6",
     "statuses": "^2.0.1",
+    "testcontainers": "^10.11.0",
     "toidentifier": "^1.0.1",
     "ts-jest": "^29.2.4",
     "ts-node": "^10.9.2",
