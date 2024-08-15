@@ -103,7 +103,7 @@
     "ts": "npx ts-node server.ts",
     "test": "jest",
     "test:unit": "jest --testPathIgnorePatterns ./routes/ --ci --reporters=default --reporters=jest-junit",
-    "test:integration": "jest --config ./jest.integration.config.ts --testPathPattern ./routes/ --forceExit --ci --reporters=default --reporters=jest-junit"
+    "test:integration": "jest --config ./jest.integration.config.ts --testPathPattern ./routes/ --forceExit --ci --detectOpenHandles --reporters=default --reporters=jest-junit"
   },
   "author": "",
   "license": "ISC",
