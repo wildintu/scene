@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="1" errors="0" time="2.547">
-  <testsuite name="/club" errors="0" failures="1" skipped="0" timestamp="2024-08-13T16:57:38" time="2.506" tests="1">
-    <testcase classname="/club GET /club should return clubs" name="/club GET /club should return clubs" time="1.501">
+<testsuites name="jest tests" tests="1" failures="1" errors="0" time="2.147">
+  <testsuite name="/club" errors="0" failures="1" skipped="0" timestamp="2024-08-15T16:03:08" time="2.119" tests="1">
+    <testcase classname="/club GET /club should return clubs" name="/club GET /club should return clubs" time="1.503">
       <failure>Error: thrown: &quot;Exceeded timeout of 1500 ms for a test.
 Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout.&quot;
     at /Users/lexi.kwak/UNO EDU/scene/server/routes/__tests__/clubs.test.ts:7:5
@@ -15,7 +15,6 @@ Add a timeout value to this test to increase the timeout, if this is a long-runn
     at Runtime._loadModule (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/jest-runtime/build/index.js:1022:12)
     at Runtime.requireModule (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/jest-runtime/build/index.js:882:12)
     at jestAdapter (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:77:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async runTestInternal (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/jest-runner/build/runTest.js:367:16)
     at async runTest (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/jest-runner/build/runTest.js:444:34)</failure>
     </testcase>
