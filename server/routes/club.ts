@@ -1,10 +1,10 @@
 import express from 'express';
 import { body, param, query } from "express-validator";
 import validationUtils from '../utils/validator';
-import clubController from '../controllers/club_controller';
+import * as clubController from '../controllers/club_controller';
 import * as clubService from '../services/club_service';
 
-const club = express();
+export const club = express();
 
 /**
  * @swagger
@@ -183,6 +183,3 @@ club.route("/").post(
 //  *        description: Returns a single club.
 //  */
 // club.route("/:id").delete(clubController.deleteclub);
-
-
-export default club;

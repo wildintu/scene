@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="1" errors="0" time="2.396">
-  <testsuite name="/club" errors="0" failures="1" skipped="0" timestamp="2024-08-15T17:37:00" time="2.342" tests="1">
-    <testcase classname="/club GET /club should return clubs" name="/club GET /club should return clubs" time="1.504">
-      <failure>PrismaClientInitializationError: 
-Invalid `prisma.club.findMany()` invocation in
-/Users/lexi.kwak/UNO EDU/scene/server/services/club_service.ts:5:28
-
-  2 import bcrypt from &apos;bcryptjs&apos;;
-  3 
-  4 export async function getClubs() {
-→ 5   return await prisma.club.findMany(
-Can&apos;t reach database server at `db:5435`
-
-Please make sure your database server is running at `db:5435`.
-    at _n.handleRequestError (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/@prisma/client/runtime/library.js:121:8049)
-    at _n.handleAndLogRequestError (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/@prisma/client/runtime/library.js:121:7057)
-    at _n.request (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/@prisma/client/runtime/library.js:121:6741)
-    at async l (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/@prisma/client/runtime/library.js:130:9355)</failure>
+<testsuites name="jest tests" tests="1" failures="1" errors="0" time="3.179">
+  <testsuite name="/club" errors="0" failures="1" skipped="0" timestamp="2024-08-16T17:08:31" time="3.146" tests="1">
+    <testcase classname="/club GET /club should return clubs" name="/club GET /club should return clubs" time="1.502">
       <failure>Error: thrown: &quot;Exceeded timeout of 1500 ms for a test.
 Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout.&quot;
     at /Users/lexi.kwak/UNO EDU/scene/server/routes/__tests__/clubs.test.ts:7:5
@@ -30,7 +15,6 @@ Add a timeout value to this test to increase the timeout, if this is a long-runn
     at Runtime._loadModule (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/jest-runtime/build/index.js:1022:12)
     at Runtime.requireModule (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/jest-runtime/build/index.js:882:12)
     at jestAdapter (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:77:13)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
     at async runTestInternal (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/jest-runner/build/runTest.js:367:16)
     at async runTest (/Users/lexi.kwak/UNO EDU/scene/server/node_modules/jest-runner/build/runTest.js:444:34)</failure>
     </testcase>

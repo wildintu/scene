@@ -1,6 +1,6 @@
 import { app } from '../../app';
 import request from 'supertest';
-import { faker } from '@faker-js/faker';
+//import { faker } from '@faker-js/faker';
 
 describe('/club', () => {
   describe('GET /club', () => {
