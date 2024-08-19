@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="0" errors="0" time="1.722">
-  <testsuite name="/club" errors="0" failures="0" skipped="0" timestamp="2024-08-19T16:38:30" time="1.693" tests="1">
-    <testcase classname="/club GET /club should return clubs" name="/club GET /club should return clubs" time="0.06">
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="2.814">
+  <testsuite name="/club" errors="0" failures="0" skipped="0" timestamp="2024-08-19T16:58:28" time="2.628" tests="1">
+    <testcase classname="/club GET /club should return clubs" name="/club GET /club should return clubs" time="0.053">
     </testcase>
   </testsuite>
 </testsuites>
