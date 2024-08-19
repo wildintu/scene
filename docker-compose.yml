@@ -4,7 +4,7 @@ services:
 
   # create and setup postgresql database
   db:
-    profiles: ['db', 'all']
+#    profiles: ['db', 'all']
     image: postgres:latest
     restart: always
     ports:
@@ -18,7 +18,7 @@ services:
 
   # create and setup Flyway for managing migrations/seed-data
   flyway:
-    profiles: ['db', 'all']
+#    profiles: ['db', 'all']
     image: flyway/flyway
     command: -url=jdbc:postgresql://db/scene_db -schemas=public -user=postgres
       -password=password -connectRetries=5 migrate
@@ -29,7 +29,7 @@ services:
 
   # create and setup Express API container - creating your own image
   api:
-    profiles: ['db', 'all']
+    profiles: ['api', 'all']
     image: scene-api
     build:
       context: ./server
