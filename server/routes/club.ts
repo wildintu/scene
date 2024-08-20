@@ -1,7 +1,7 @@
 import express from 'express';
 import { body, param, query } from "express-validator";
-import validationUtils from '../utils/validator';
-import clubController from '../controllers/club_controller';
+import * as validationUtils from '../utils/validator';
+import * as clubController from '../controllers/club_controller';
 import * as clubService from '../services/club_service';
 
 const club = express();
@@ -53,7 +53,7 @@ club.route("/:id").get(clubController.findClub);
  *                email:
  *                    type: string
  *                    required: true
- *                encrypted_password:
+ *                password:
  *                    type: string
  *                    required: true
  *                name:
@@ -86,13 +86,13 @@ club.route("/").post(
     body('club_id').isInt(),
     body('email').isString().trim()
     .custom(async(email, {req}) => {
-      const club = await clubService.getClubByEmail(email)
-      if (club) {
-        throw new Error('Email is taken.')
-      }}
-    ),
+        const club = await clubService.getClubByEmail(email)
+        if (club) {
+            throw new Error('Email is taken.')
+          }}
+        ),
     body('name').isString(),
-    body('phone').isString().trim(),
+    body('phone').isString(),
     body('address').isString(),
     body('city').isString(),
     body('state').isString(),

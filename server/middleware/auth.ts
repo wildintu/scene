@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
 
-async function verifyTokenMiddleware(req: Request, res: Response, next: NextFunction) {
+export async function verifyTokenMiddleware(req: Request, res: Response, next: NextFunction) {
   if (process.env.NODE_ENV === 'test') {
-    res.locals.user_id = 1;
+    res.locals.club_id = 1;
     return next();
   }
 
@@ -21,7 +21,7 @@ async function verifyTokenMiddleware(req: Request, res: Response, next: NextFunc
       const tokenVerified = jwt.verify(token, `${process.env.SECRET_KEY}`);
       if (tokenVerified) {
         console.log(tokenVerified);
-        res.locals.user = tokenVerified.sub;
+        res.locals.club = tokenVerified.sub;
         return next();
       }
     } catch {
@@ -30,5 +30,3 @@ async function verifyTokenMiddleware(req: Request, res: Response, next: NextFunc
   }
   return res.sendStatus(401);
 };
-
-export default verifyTokenMiddleware;

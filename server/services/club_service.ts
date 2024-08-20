@@ -13,8 +13,8 @@ export async function getClubByEmail(email: string) {
   return await prisma.club.findFirst({ where: { email: email } });
 }
 
-export async function createClub(params: any) {
-  const { club_id, email, password, name, phone, address, city, state, zip, website } = params;
+export async function createClub(body: any) {
+  const { club_id, email, password, name, phone, address, city, state, zip, website } = body;
   const hashedPassword = await bcrypt.hash(password, 10);
     return await prisma.club.create({
       data: {
