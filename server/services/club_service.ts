@@ -32,23 +32,26 @@ export async function createClub(body: any) {
     });
 };
 
-// export async function updateUser(id, params) {
-//   const { firstName, lastName, email, phone, address, city, state, zip } = params;
-//   return await prisma.users.update({
-//     where: { id: Number(id) },
-//     data: {
-//       firstname: firstName,
-//       lastname: lastName,
-//       email: email,
-//       phone: phone,
-//       address: address,
-//       city: city,
-//       state: state,
-//       zip: zip
-//     },
-//   });
-// };
+export async function updateClub(id: Number, params: any) {
+  const { club_id, email, password, name, phone, address, city, state, zip, website } = params;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  return await prisma.club.update({
+    where: { id: Number(id) },
+    data: {
+      club_id: club_id,
+      email: email,
+      encrypted_password: hashedPassword,
+      name: name,
+      phone: phone,
+      address: address,
+      city: city,
+      state: state,
+      zip: zip,
+      website: website
+    },
+  });
+};
 
-// export async function deleteUser(userId) {
-//   return await prisma.users.delete({ where: { id: Number(userId) }});
-// };
+export async function deleteClub(clubId: Number) {
+  return await prisma.club.delete({ where: { id: Number(clubId) }});
+};

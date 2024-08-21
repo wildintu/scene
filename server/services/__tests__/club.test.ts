@@ -3,7 +3,6 @@ import { prisma } from '../../utils/prisma';
 import { prismaMock } from '../../testUtils/prisma';
 import { generateRandomPassword } from '../../testUtils/generateRandom';
 import bcrypt from 'bcryptjs';
-import club from '../../routes/club';
 
 jest.mock('@prisma/client')
 
