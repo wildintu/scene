@@ -14,7 +14,20 @@ describe('/club', () => {
   
   describe('GET /club/:id', () => {
     it('should return a single club', async () => {
-      const club = await clubService.createClub(faker.internet.email())
+      const clubDetails = {
+        id: 1,
+        club_id: faker.number.int({max: 10}),
+        email: faker.internet.email(),
+        password: faker.internet.password(),
+        name: faker.internet.userName(),
+        phone: faker.phone.number(),
+        address: faker.location.streetAddress(),
+        city: faker.location.city(),
+        state: faker.location.state(),
+        zip: faker.number.int({max: 9000}),
+        website: faker.internet.url()
+      }
+      const club = await clubService.createClub(clubDetails)
       await request(app)
         .get(`/club/${club.id}`)
         .expect(200)
