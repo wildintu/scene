@@ -4,7 +4,6 @@ import * as clubService from '../services/club_service';
 export async function clubsList(req: Request, res: Response) {
   const allClubs = await clubService.getClubs();
   res.json(allClubs).status(200);
-  console.log(allClubs)
 }
 
 export async function findClub(req: Request, res: Response) {
@@ -15,7 +14,6 @@ export async function findClub(req: Request, res: Response) {
 
 export async function newClub(req: Request, res: Response, next: NextFunction) {
   const club = await clubService.createClub(req.body);
-  console.log(club)
   res.json(club).status(200);
 };
 
