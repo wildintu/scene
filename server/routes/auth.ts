@@ -1,7 +1,7 @@
 import express from 'express';
-import authController from '../controllers/auth_controller';
+import * as authController from '../controllers/auth_controller';
 
-const auth = express();
+export const auth = express();
 
 // /**
 //  * @swagger
@@ -26,12 +26,3 @@ const auth = express();
 //  *        description: Logs in a single club.
 //  */
 auth.route("/").post(authController.loginClub);
-  // [
-  //   body('email').isString().trim(),
-  //   body('password').isString()
-  // ],
-  // validationUtils.validate,
-  // authController.loginUser);
-
-
-export default auth;

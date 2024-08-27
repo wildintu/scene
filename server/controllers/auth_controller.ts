@@ -1,9 +1,9 @@
 import * as clubService from '../services/club_service';
-import bcrypt from 'bcryptjs';
 import { Request, Response, NextFunction } from 'express';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-async function loginClub(req: Request, res: Response, next: NextFunction) {
+export async function loginClub(req: Request, res: Response, next: NextFunction) {
   const {email, password} = req.body;
   const club: any  = await clubService.getClubByEmail(email);
   if (club) {
@@ -18,9 +18,3 @@ async function loginClub(req: Request, res: Response, next: NextFunction) {
       return res.status(400).json({ "response": "Invalid login credentials: User not found." })
   }
 };
-
-const authController = {
-  loginClub
-}
-
-export default authController;
