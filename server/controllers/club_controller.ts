@@ -8,13 +8,13 @@ export async function clubsList(req: Request, res: Response) {
 
 export async function findClub(req: Request, res: Response) {
   const { id } = req.params;
-  const clubSelected = await clubService.getClub(id);
+  const clubSelected = await clubService.getClub(Number(id));
   res.json(clubSelected).status(200);
 }
 
 export async function newClub(req: Request, res: Response, next: NextFunction) {
   const club = await clubService.createClub(req.body);
-  res.json(club).status(200);
+  res.status(201).json(club);
 };
 
 export async function updateClub(req: Request, res: Response, next: NextFunction) {

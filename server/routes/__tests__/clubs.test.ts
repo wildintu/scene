@@ -55,13 +55,11 @@ describe('/club', () => {
       await request(app)
         .post('/club')
         .send(clubDetails)
-        .expect(200)
-        .then(response => async () => {
-          const club = await clubService.getClubByEmail(email)
-          if (club) {
-            await clubService.deleteClub(Number(club.id))
-          }
-        })
+        .expect(201)
+      const club = await clubService.getClubByEmail(email)
+      if (club) {
+        await clubService.deleteClub(Number(club.id))
+      }
     })
     it('should fail if email is not correct format', async () => {
       const email = 'foooo@suppp'
@@ -78,16 +76,13 @@ describe('/club', () => {
     })
   })
 
-  describe('UPDATE /', () => {
+  describe('UPDATE /club/:id', () => {
     it('should update a single club', async () => {
-    const id = 1
-    const email = faker.internet.email()
-    const password = 'password'
     const clubDetails = {
-      id: id,
+      id: 1,
       club_id: faker.number.int({max: 10}),
-      email: email,
-      password: password,
+      email: faker.internet.email(),
+      password: 'password',
       name: faker.internet.userName(),
       phone: faker.phone.number(),
       address: faker.location.streetAddress(),
@@ -97,16 +92,16 @@ describe('/club', () => {
       website: faker.internet.url()
     }
     const club = await clubService.createClub(clubDetails)
+    console.log(club)
     const enc_pw = club.encrypted_password
-    const newPassword = 'TEST'
     await request(app)
     .put(`/club/${club.id}`)
     .send({
       id: club.id ,
       club_id: club.club_id,
-      email: 'change',
-      password: newPassword,
-      name: 'test',
+      email: club.email,
+      password: 'TEST',
+      name: club.name,
       phone: club.phone,
       address: club.address,
       city: club.city,
@@ -115,16 +110,12 @@ describe('/club', () => {
       website: club.website
     })
     .expect(200)
-    .then(response => async () => {
-      const clubUpdate = await clubService.getClub(clubDetails.toString())
-      console.log(clubUpdate)
-      console.log(club)
-      if (clubUpdate) {
-        expect(clubUpdate.encrypted_password).not.toEqual(club.encrypted_password)
-      }
-      await clubService.deleteClub(Number(club.id))
-      console.log(response)
-    })
+    const clubUpdate = await clubService.getClub(Number(club.id))
+    console.log(clubUpdate)
+    if (clubUpdate) {
+      expect(clubUpdate.encrypted_password).not.toEqual(enc_pw)
+    }
+    await clubService.deleteClub(Number(club.id))
     })
   })
 

@@ -4,10 +4,11 @@ import club from './routes/club';
 import scene from './routes/scene';
 import venue from './routes/venue';
 import attendee from './routes/attendee';
+import { swaggerSpec } from './utils/swagger_spec';
+import swaggerUI from 'swagger-ui-express';
 import auth from './routes/auth';
 import { verifyTokenMiddleware } from './middleware/auth';
 import cors from 'cors';
-
 
 export const app = express();
 
@@ -19,6 +20,7 @@ app.get('/', async (req: Request, res: Response) => {
   res.send('Scene - app.ts - Home')
 });
 
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 // app.use('/login', auth);
 // app.use("*", verifyTokenMiddleware);
 

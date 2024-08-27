@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="5" failures="0" errors="0" time="3.834">
-  <testsuite name="/club" errors="0" failures="0" skipped="0" timestamp="2024-08-22T04:46:36" time="3.786" tests="5">
-    <testcase classname="/club GET /club should return clubs" name="/club GET /club should return clubs" time="0.069">
+<testsuites name="jest tests" tests="4" failures="1" errors="0" time="1.107">
+  <testsuite name="ClubService" errors="0" failures="1" skipped="0" timestamp="2024-08-26T17:41:50" time="1.08" tests="4">
+    <testcase classname="ClubService getClubs should return all clubs" name="ClubService getClubs should return all clubs" time="0.001">
     </testcase>
-    <testcase classname="/club GET /club/:id should return a single club" name="/club GET /club/:id should return a single club" time="0.084">
+    <testcase classname="ClubService getClub should return one club" name="ClubService getClub should return one club" time="0">
     </testcase>
-    <testcase classname="/club CREATE /club should create a single club" name="/club CREATE /club should create a single club" time="0.071">
+    <testcase classname="ClubService createClub should create one club" name="ClubService createClub should create one club" time="0.117">
     </testcase>
-    <testcase classname="/club CREATE /club should fail if email is not correct format" name="/club CREATE /club should fail if email is not correct format" time="0.004">
-    </testcase>
-    <testcase classname="/club UPDATE / should update a single club" name="/club UPDATE / should update a single club" time="0.131">
+    <testcase classname="ClubService updateClub should update one club" name="ClubService updateClub should update one club" time="0.184">
+      <failure>TypeError: prisma_1.prisma.club.update is not a function
+    at Object.&lt;anonymous&gt; (/Users/lexi.kwak/UNO EDU/scene/server/services/club_service.ts:38:28)
+    at Generator.next (&lt;anonymous&gt;)
+    at fulfilled (/Users/lexi.kwak/UNO EDU/scene/server/services/club_service.ts:5:58)</failure>
     </testcase>
   </testsuite>
 </testsuites>
