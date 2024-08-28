@@ -4,7 +4,7 @@ import * as validationUtils from '../utils/validator'
 import * as clubController from '../controllers/club_controller'
 import * as clubService from '../services/club_service'
 
-const club = express()
+export const club = express()
 
 /**
  * @swagger
@@ -192,6 +192,3 @@ club.route("/:id").put(
  *        description: Deletes a single club.
  */
 club.route("/:id").delete(clubController.deleteClub)
-
-
-export default club

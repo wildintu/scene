@@ -1,16 +1,16 @@
-const path = require("path");
-const { DockerComposeEnvironment, Wait } = require("testcontainers");
+const path = require("path")
+const { DockerComposeEnvironment, Wait } = require("testcontainers")
 
 module.exports = async () => {
-  const composeFilePath = path.resolve(__dirname, "../../");
-  const composeFile = "docker-compose.yml";
+  const composeFilePath = path.resolve(__dirname, "../../")
+  const composeFile = "docker-compose.yml"
 
   global.__ENVIRONMENT__ = await new DockerComposeEnvironment(
     composeFilePath,
     composeFile
   )
     .withWaitStrategy("flyway-1", Wait.forLogMessage(/^Successfully applied/))
-    .up();
+    .up()
 
-  await new Promise((x) => setTimeout(x, 500));
-};
+  await new Promise((x) => setTimeout(x, 500))
+}

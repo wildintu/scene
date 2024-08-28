@@ -1,7 +1,7 @@
 import express from 'express'
 import * as sceneController from '../controllers/scene_controller'
 
-const scene = express();
+export const scene = express();
 
 /**
  * @swagger
@@ -31,5 +31,3 @@ scene.route("/").get(sceneController.scenesList);
  *        description: Returns a single scene.
  */
 scene.route("/:id").get(sceneController.findScene);
-
-export default scene

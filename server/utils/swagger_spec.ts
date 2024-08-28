@@ -33,6 +33,6 @@ const swaggerOptions = {
     ]
   },
   apis: ['./routes/**.ts', `${__dirname}/routes/*.ts`],
-};
+}
 
-export const swaggerSpec = swaggerDocs(swaggerOptions);
+export const swaggerSpec = swaggerDocs(swaggerOptions)

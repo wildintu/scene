@@ -1,7 +1,7 @@
 import express from 'express'
-import venueController from '../controllers/venue_controller'
+import * as venueController from '../controllers/venue_controller'
 
-const venue = express();
+export const venue = express();
 
 /**
  * @swagger
@@ -31,5 +31,3 @@ venue.route("/").get(venueController.venuesList);
  *        description: Returns a single venue.
  */
 venue.route("/:id").get(venueController.findVenue);
-
-export default venue

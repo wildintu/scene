@@ -1,7 +1,7 @@
 import express from 'express'
 import * as attendeeController from '../controllers/attendee_controller'
 
-const attendee = express();
+export const attendee = express()
 
 /**
  * @swagger
@@ -31,5 +31,3 @@ attendee.route("/").get(attendeeController.attendeesList)
  *        description: Returns a single attendee.
  */
 attendee.route("/:id").get(attendeeController.findAttendee)
-
-export default attendee

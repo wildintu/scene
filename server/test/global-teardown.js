@@ -1,3 +1,3 @@
 module.exports = async () => {
-  await global.__ENVIRONMENT__?.down();
-};
+  await global.__ENVIRONMENT__?.down()
+}
