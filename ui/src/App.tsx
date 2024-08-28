@@ -3,14 +3,17 @@ import './App.css'
 
 import { Nav } from './components/Nav'
 import { Router } from './components/Routes'
+import { Theme } from '@radix-ui/themes'
 
 function App() {
 
 
   return (
     <>
-      <Nav />
-      <Router />
+      <Theme>
+        <Nav />
+        <Router />
+      </Theme>
     </>
   )
 }
