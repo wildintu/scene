@@ -1,7 +1,7 @@
-import request from 'supertest';
-import { app } from '../../app';
-import { faker } from '@faker-js/faker';
-import * as clubService from '../../services/club_service';
+import request from 'supertest'
+import { app } from '../../app'
+import { faker } from '@faker-js/faker'
+import * as clubService from '../../services/club_service'
 
 describe('/club', () => {
   describe('GET /club', () => {

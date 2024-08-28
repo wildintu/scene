@@ -1,10 +1,10 @@
-import express from 'express';
-import { body, param, query } from "express-validator";
-import * as validationUtils from '../utils/validator';
-import * as clubController from '../controllers/club_controller';
-import * as clubService from '../services/club_service';
+import express from 'express'
+import { body } from "express-validator"
+import * as validationUtils from '../utils/validator'
+import * as clubController from '../controllers/club_controller'
+import * as clubService from '../services/club_service'
 
-const club = express();
+const club = express()
 
 /**
  * @swagger
@@ -16,7 +16,7 @@ const club = express();
  *      200:
  *        description: Returns an array of clubs.
  */
-club.route("/").get(clubController.clubsList);
+club.route("/").get(clubController.clubsList)
 
 /**
  * @swagger
@@ -33,7 +33,7 @@ club.route("/").get(clubController.clubsList);
  *      200:
  *        description: Returns a single club.
  */
-club.route("/:id").get(clubController.findClub);
+club.route("/:id").get(clubController.findClub)
 
 /**
  * @swagger
@@ -100,7 +100,7 @@ club.route("/").post(
     body('website').isString(),
   ],
   validationUtils.validate,
-  clubController.newClub);
+  clubController.newClub)
 
 /**
  * @swagger
@@ -174,7 +174,7 @@ club.route("/:id").put(
     body('website').isString(),
   ],
   validationUtils.validate,
-  clubController.updateClub);
+  clubController.updateClub)
 
 /**
  * @swagger
@@ -191,7 +191,7 @@ club.route("/:id").put(
  *      204:
  *        description: Deletes a single club.
  */
-club.route("/:id").delete(clubController.deleteClub);
+club.route("/:id").delete(clubController.deleteClub)
 
 
-export default club;
+export default club

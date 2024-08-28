@@ -1,4 +1,4 @@
-import bcrypt from 'bcryptjs';
+
 
 export function generateRandomPassword(length: any) {
     var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

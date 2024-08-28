@@ -1,8 +1,8 @@
-import * as clubService from '../club_service';
-import { prisma } from '../../utils/prisma';
-import { prismaMock } from '../../testUtils/prisma';
-import { generateRandomPassword } from '../../testUtils/generate_random';
-import bcrypt from 'bcryptjs';
+import * as clubService from '../club_service'
+import { prisma } from '../../utils/prisma'
+import { prismaMock } from '../../testUtils/prisma'
+import { generateRandomPassword } from '../../testUtils/generate_random'
+import bcrypt from 'bcryptjs'
 
 jest.mock('@prisma/client')
 

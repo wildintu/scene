@@ -1,5 +1,5 @@
-import express from 'express';
-import sceneController from '../controllers/scene_controller';
+import express from 'express'
+import * as sceneController from '../controllers/scene_controller'
 
 const scene = express();
 
@@ -32,4 +32,4 @@ scene.route("/").get(sceneController.scenesList);
  */
 scene.route("/:id").get(sceneController.findScene);
 
-export default scene;
+export default scene

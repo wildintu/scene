@@ -1,7 +1,7 @@
-import { Routes, Route } from 'react-router-dom';
-import { Counts } from '../containers/Counts';
-import { Login } from '../containers/Login';
-import { Docs } from '../containers/Docs';
+import { Routes, Route } from 'react-router-dom'
+import { Counts } from '../containers/Counts'
+import { Login } from '../containers/Login'
+import { Docs } from '../containers/Docs'
 
 export function Router() {
   return (

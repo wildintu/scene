@@ -1,5 +1,5 @@
-import { prisma }  from '../utils/prisma';
-import bcrypt from 'bcryptjs';
+import { prisma }  from '../utils/prisma'
+import bcrypt from 'bcryptjs'
 
 export async function getClubs() {
   return await prisma.club.findMany();

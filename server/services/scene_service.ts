@@ -1,4 +1,4 @@
-import { prisma }  from '../utils/prisma';
+import { prisma }  from '../utils/prisma'
 
 async function getScenes() {
   return await prisma.event.findMany();

@@ -1,4 +1,4 @@
-import swaggerDocs from 'swagger-jsdoc';
+import swaggerDocs from 'swagger-jsdoc'
 
 const swaggerOptions = {
   failOnErrors: true, // Whether or not to throw when parsing errors. Defaults to false.

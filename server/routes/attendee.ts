@@ -1,5 +1,5 @@
-import express from 'express';
-import attendeeController from '../controllers/attendee_controller';
+import express from 'express'
+import * as attendeeController from '../controllers/attendee_controller'
 
 const attendee = express();
 
@@ -13,7 +13,7 @@ const attendee = express();
  *      200:
  *        description: Returns an array of attendees.
  */
-attendee.route("/").get(attendeeController.attendeesList);
+attendee.route("/").get(attendeeController.attendeesList)
 
 /**
  * @swagger
@@ -30,6 +30,6 @@ attendee.route("/").get(attendeeController.attendeesList);
  *      200:
  *        description: Returns a single attendee.
  */
-attendee.route("/:id").get(attendeeController.findAttendee);
+attendee.route("/:id").get(attendeeController.findAttendee)
 
-export default attendee;
+export default attendee

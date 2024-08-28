@@ -1,4 +1,4 @@
-import { prisma } from '../utils/prisma';
+import { prisma } from '../utils/prisma'
 const prismaMock = prisma as any
 
-export { prismaMock };
+export { prismaMock }

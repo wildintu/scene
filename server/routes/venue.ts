@@ -1,5 +1,5 @@
-import express from 'express';
-import venueController from '../controllers/venue_controller';
+import express from 'express'
+import venueController from '../controllers/venue_controller'
 
 const venue = express();
 
@@ -32,4 +32,4 @@ venue.route("/").get(venueController.venuesList);
  */
 venue.route("/:id").get(venueController.findVenue);
 
-export default venue;
+export default venue
