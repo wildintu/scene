@@ -1,39 +1,17 @@
-// import { useContext } from 'react';
-// import { TabNav } from '@radix-ui/themes';
-// import AuthContext from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
-// function Nav() {
-//   const { user, logout } = useContext(AuthContext);
+export function Nav() {
 
-//   const authenticatedLinks = () => {
-//     return (
-//       <div className='navbar'>
-//         <TabNav.Root color="cyan">
-//           <TabNav.Link className="navigation-link" href="/profile" active>Profile</TabNav.Link>
-//           <TabNav.Link className="navigation-link" href="/animals">Available Animals</TabNav.Link>
-//           <TabNav.Link className="logout-link" onClick={logout}>Logout</TabNav.Link>
-//         </TabNav.Root>
-//       </div>
-//     )
-//   }
-
-//   const unauthenticatedLinks = () => {
-//     return (
-//       <div className='navbar'>
-//         <TabNav.Root color="cyan">
-//           <TabNav.Link className="login-link" href="/login" active>Home</TabNav.Link>
-//           {/* <TabNav.Link href="/about">About</TabNav.Link>
-//           <TabNav.Link href="/faq">FAQ</TabNav.Link> */}
-//         </TabNav.Root>
-//       </div>
-//     )
-//   }
-
-//   return (
-//     <>
-//       {user ? authenticatedLinks() : unauthenticatedLinks() }
-//     </>
-//   )
-// }
-
-// export default Nav;
+  return (
+    <>
+    <div className="nav">
+      <img className='logo' src='/vite.svg' />
+      <div className='links'>
+        <Link to={'/login'} className='nav-link'>Login</Link>
+        <Link to={'/'} className='nav-link'>Home</Link>
+        <Link to={'/docs'} className='nav-link'>Docs</Link>
+      </div>
+    </div>
+    </>
+  )
+}

@@ -1,7 +1,5 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -37,6 +35,38 @@
   padding: 2em;
 }
 
+.text {
+  color: black;
+}
+
 .read-the-docs {
   color: #888;
+}
+
+.login {
+  width: 400px;
+  display: flex;
+  border: 1px solid greenyellow;
+  margin-top: 30px
+}
+
+.nav {
+  border-bottom: 1px solid gray;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.nav .logo {
+  height: 30px;
+  padding: 0;
+
+}
+
+.nav .nav-link {
+  border: 1px solid gray;
+  padding: 5px 10px;
+  margin-left: 10px;
+  border-radius: 4px;
 }

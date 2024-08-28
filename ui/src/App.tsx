@@ -1,5 +1,5 @@
 import './App.css'
-// import Nav from './components/Nav';
+import { Nav } from './components/Nav';
 import { Router } from './components/Routes';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      {/* <Nav /> */}
+      <Nav />
       <Router />
     </>
   )
