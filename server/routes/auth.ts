@@ -1,7 +1,7 @@
 import express from 'express'
 import * as authController from '../controllers/auth_controller'
 
-export const auth = express();
+export const auth = express()
 
 // /**
 //  * @swagger

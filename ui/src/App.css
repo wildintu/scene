@@ -58,6 +58,16 @@
   
 }
 
+.login .heading {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.login .button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .login .input-fields {
   width: 200px;
   display: flex;

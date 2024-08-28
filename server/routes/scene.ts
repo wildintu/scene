@@ -3,7 +3,7 @@ import { body } from 'express-validator'
 import * as validationUtils from '../utils/validator'
 import * as sceneController from '../controllers/scene_controller'
 
-export const scene = express();
+export const scene = express()
 
 /**
  * @swagger
@@ -15,7 +15,7 @@ export const scene = express();
  *      200:
  *        description: Returns an array of scenes.
  */
-scene.route("/").get(sceneController.scenesList);
+scene.route("/").get(sceneController.scenesList)
 
 /**
  * @swagger
@@ -32,7 +32,7 @@ scene.route("/").get(sceneController.scenesList);
  *      200:
  *        description: Returns a single scene.
  */
-scene.route("/:id").get(sceneController.findScene);
+scene.route("/:id").get(sceneController.findScene)
 
 /**
  * @swagger

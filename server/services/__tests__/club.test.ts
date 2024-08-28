@@ -44,7 +44,7 @@ describe('ClubService', () => {
         website: 'String'
       }
       const password: string = generateRandomPassword(10)
-      const hashedPassword = await bcrypt.hash(password, 10);
+      const hashedPassword = await bcrypt.hash(password, 10)
       clubObj.password = hashedPassword
       prismaMock.club = { create: jest.fn().mockReturnValueOnce(clubObj) }
       const result = await clubService.createClub(clubObj)
@@ -68,7 +68,7 @@ describe('ClubService', () => {
   //       zip: 35205
   //     }
   //     const password: string = generateRandomPassword(10)
-  //     const hashedPassword = await bcrypt.hash(password, 10);
+  //     const hashedPassword = await bcrypt.hash(password, 10)
   //     clubObj.password = hashedPassword
   //     prismaMock.club = { create: jest.fn().mockReturnValueOnce(clubObj) }
   //     const created = await clubService.createClub(clubObj)

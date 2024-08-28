@@ -4,7 +4,7 @@ import * as validationUtils from '../utils/validator'
 import * as venueController from '../controllers/venue_controller'
 import * as venueService from '../services/venue_service'
 
-export const venue = express();
+export const venue = express()
 
 /**
  * @swagger
@@ -16,7 +16,7 @@ export const venue = express();
  *      200:
  *        description: Returns an array of venues.
  */
-venue.route("/").get(venueController.venuesList);
+venue.route("/").get(venueController.venuesList)
 
 /**
  * @swagger
@@ -33,7 +33,7 @@ venue.route("/").get(venueController.venuesList);
  *      200:
  *        description: Returns a single venue.
  */
-venue.route("/:id").get(venueController.findVenue);
+venue.route("/:id").get(venueController.findVenue)
 
 /**
  * @swagger

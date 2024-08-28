@@ -3,7 +3,7 @@ import * as jwt from 'jsonwebtoken'
 
 export async function verifyTokenMiddleware(req: Request, res: Response, next: NextFunction){
   if (process.env.NODE_ENV === 'test') {
-    res.locals.club_id = 1;
+    res.locals.club_id = 1
     return next()
   }
 
@@ -12,15 +12,15 @@ export async function verifyTokenMiddleware(req: Request, res: Response, next: N
   if (req.path.match("docs")) return next()
   if (req.path.match("swagger")) return next()
 
-  const splitAuth = req.headers.authorization?.split(" ");
+  const splitAuth = req.headers.authorization?.split(" ")
   const token = splitAuth && splitAuth.length >= 2 && splitAuth[1]
   if (token) {
     try {
       const tokenVerified = jwt.verify(token, `${process.env.SECRET_KEY}`)
       if (tokenVerified) {
-        console.log(tokenVerified);
-        res.locals.user_id = tokenVerified.sub;
-        return next();
+        console.log(tokenVerified)
+        res.locals.user_id = tokenVerified.sub
+        return next()
       }
     } catch {
       return res.sendStatus(401)

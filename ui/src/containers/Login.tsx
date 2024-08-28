@@ -1,16 +1,16 @@
-import { Button, TextField, Heading, Text } from '@radix-ui/themes';
+import { Button, TextField, Heading, Text } from '@radix-ui/themes'
 
 export function Login() {
-  // const [email, setEmail] = useState();
+  // const [email, setEmail] = useState()
   
   return (
     <>
     <div className='align-center'>
         <div className='login'>
-        <h3>LOGIN</h3>
+        <Heading className='heading' >Welcome to Scene</Heading>
         <TextField.Root className='input-fields' size="2" placeholder='Email' />
         <TextField.Root className='input-fields' size="2" placeholder='Password' />
-        <Button>Submit</Button>
+        <Button className='button'>Submit</Button>
         </div>
       </div>
     </>
