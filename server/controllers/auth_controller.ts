@@ -1,5 +1,5 @@
-import * as clubService from '../services/club_service'
 import { Request, Response, NextFunction } from 'express'
+import * as clubService from '../services/club_service'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 

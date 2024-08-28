@@ -1,5 +1,5 @@
 import express from 'express'
-import { body } from "express-validator"
+import { body } from 'express-validator'
 import * as validationUtils from '../utils/validator'
 import * as clubController from '../controllers/club_controller'
 import * as clubService from '../services/club_service'

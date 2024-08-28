@@ -5,7 +5,7 @@ import { Nav } from './components/Nav'
 import { Router } from './components/Routes'
 import { Theme } from '@radix-ui/themes'
 
-function App() {
+export function App() {
 
 
   return (
@@ -17,5 +17,3 @@ function App() {
     </>
   )
 }
-
-export default App
