@@ -9,7 +9,7 @@ export function Nav() {
       <div className='links'>
         <Link to={'/login'} className='nav-link'>Login</Link>
         <Link to={'/'} className='nav-link'>Home</Link>
-        <Link to={'/docs'} className='nav-link'>Docs</Link>
+        <Link to={'/dashboard'} className='nav-link'>Dashboard</Link>
       </div>
     </div>
     </>

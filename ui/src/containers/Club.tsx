@@ -1,11 +1,11 @@
 
 
-export function Docs() {
+export function Club() {
 
   return (
     <>
       <div className="text">
-        DOCS page
+        Club page
       </div>
     </>
   )
