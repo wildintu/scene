@@ -11,7 +11,7 @@ const instance = axios.create({
 // Add JWT as Authorization header if present (do nothing if not present):
 instance.interceptors.request.use(
   (config) => {
-    const token = TokenUtils.getUser();
+    const token = TokenUtils.getClub();
     if (token && config.headers) {
       console.log('adding-header');
       config.headers.Authorization = "Bearer " + token;

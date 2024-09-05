@@ -40,6 +40,18 @@ services:
       - ./server:/app
     environment:
       DATABASE_URL: "postgresql://postgres:password@db:5432/scene_db?schema=public"
+  
+    # create and setup UI container - creating your own image
+  ui:
+    profiles: ['ui', 'all']
+    image: scene-ui
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./ui:/src
 
 volumes:
   db:
