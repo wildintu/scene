@@ -1,22 +1,35 @@
-import * as TokenUtils from '../utils/token'
-import * as aInstance from '../utils/axios'
+import { createContext } from "react"
+import TokenUtils from "../../utils/token"
+import axiosUtil from '../utils/axios'
+import club from "../containers/Club"
 
-export const authenticate = async (email: string, password: string) => {
-  return await aInstance
+const AuthContext  = createContext(club)
+
+
+const authenticate = async (email: string, password: string) => {
+  return await axiosUtil
     .post('/auth/login', { email, password })
     .then((response: any) => {
       if (response.status == 200) {
-        TokenUtils.setUser(response.data.token)
+        TokenUtils.setClub(response.data.token)
       }
       return response
     })
 }
 
-export const logout = async () => {
+const logout = async () => {
   return await TokenUtils.logout()
 }
 
-export const AuthService = {
+const AuthService = {
   authenticate: AuthenticatorResponse,
   logout: logout
 }
+
+const auth = {
+  AuthContext,
+  authenticate,
+  AuthService
+}
+
+export default auth

@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Button, TextField, Heading, Text } from '@radix-ui/themes'
-import * as aInstance from '../context/auth'
+import {axiosI} from '../utils/axiosI'
 import { useNavigate } from 'react-router-dom'
 import { jwtDecode } from "jwt-decode"
-import * as TokenUtils from '../'
+import TokenUtils from '../../utils/token'
 
 const navigate = useNavigate()
 
@@ -19,7 +19,7 @@ export function Login() {
   }
   
   const submitLogin = async () => {
-    const resp = await aInstance
+    const resp = await axiosI
       .post('/login', { email, password })
       .then((response) => {
         if (response.status == 200) {

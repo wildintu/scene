@@ -6,7 +6,7 @@ import { Nav } from './components/Nav'
 import { Router } from './components/Routes'
 import AuthContext from './context/auth'
 import { useEffect, useState } from 'react'
-import { TokenUtils } from '../utils/token'
+import TokenUtils from '../utils/token'
 
 export function App() {
     const [club, setClub] = useState()
@@ -16,18 +16,19 @@ export function App() {
       if (jwt) {
         setClub(jwt)
         console.log(jwt)
-      } else {
+      }
+      else {
           console.log('nope')
-        }
-      }, [])
+      }
+    }, [])
 
-    const login = async (clubData) => {
+    const login = async (clubData: any) => {
       setClub(clubData)
       await TokenUtils.setClub(clubData)
     }
 
-    const logout = async (clubData) => {
-      setClub(null)
+    const logout = async (clubData: any) => {
+      setClub(clubData(null))
       await TokenUtils.logout()
     }
 

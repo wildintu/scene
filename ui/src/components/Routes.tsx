@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom'
 import { useContext } from 'react'
-import * as AuthContext from '../context/auth'
-import { Club } from '../containers/Club'
+import AuthContext from '../context/auth'
 import { Counts } from '../containers/Counts'
 import { Login } from '../containers/Login'
 import { Dashboard } from '../containers/Dashboard'
+import { Club } from '../containers/Club'
 
 export function Router() {
-  const { club \ } = useContext(AuthContext)
+  const { club } = useContext(AuthContext)
   const { email } = req.body
 
   const authenticatedRoutes = () => {

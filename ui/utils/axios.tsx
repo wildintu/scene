@@ -1,14 +1,19 @@
 import axios from 'axios'
-
 import { useNavigate } from 'react-router-dom'
 
-const navigate = useNavigate()
+// const navigate = useNavigate()
   
-  export const aInstance = axios.create({
-    baseURL: 'http://localhost:5000',
-    timeout: 1000,
-    headers: {'Content-Type': 'application/json'}
-  })
+const axiosIn = axios.create({
+  baseURL: 'http://localhost:5000',
+  timeout: 1000,
+  headers: {'Content-Type': 'application/json'}
+})
+
+const axiosI = {
+  axiosIn: axiosIn
+}
+
+export default axiosI
   
   // const [email, setEmail] = useState()
   // const updateEmail = (event: any) => {

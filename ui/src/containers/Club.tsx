@@ -1,4 +1,11 @@
-import { createContext } from "react"
-import * as AuthContext from '../context/auth'
+import TokenUtils from "../../utils/token"
 
-export const Club: object  = createContext(AuthContext)
+  const { getClub, setClub, logout } = TokenUtils
+
+  const club = {
+    getClub,
+    setClub,
+    logout
+  }
+
+  export default club
