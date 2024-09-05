@@ -1,12 +1,4 @@
+import { createContext } from "react"
+import * as AuthContext from '../context/auth'
 
-
-export function Club() {
-
-  return (
-    <>
-      <div className="text">
-        Club page
-      </div>
-    </>
-  )
-}
+export const Club: object  = createContext(AuthContext)

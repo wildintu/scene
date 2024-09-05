@@ -31,3 +31,5 @@ app.use("*", verifyTokenMiddleware)
 //authenticated routes
 app.use('/club', club)
 app.use('/attendee', attendee)
+// app.use('/counts', counts)
+// app.use('/dashboard', dashboard)
