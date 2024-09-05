@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import * as AuthContext from '../context/auth'
+import AuthContext from '../context/auth'
 
 export function Nav() {
   const { club, logout } = useContext(AuthContext)
-  
+
   const unauthenticatedNav = () => {
     return (
       <>
@@ -35,7 +35,7 @@ export function Nav() {
 
   return (
     <>
-        {club ? unauthenticatedNav() : authenticatedNav()}
+      {club ? unauthenticatedNav() : authenticatedNav()}
     </>
   )
 }

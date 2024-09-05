@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { Button, TextField, Heading, Text } from '@radix-ui/themes'
-import {axiosI} from '../utils/axiosI'
+import instance from '../utils/axios'
 import { useNavigate } from 'react-router-dom'
 import { jwtDecode } from "jwt-decode"
-import TokenUtils from '../../utils/token'
+import TokenUtils from '../utils/token'
 
-const navigate = useNavigate()
 
 export function Login() {
   const [email, setEmail] = useState()
@@ -13,13 +12,15 @@ export function Login() {
     setEmail(event.target.value)
   }
   
+  const navigate = useNavigate()
+
   const [password, setPassword] = useState()
   const updatePassword = (event: any) => {
     setPassword(event.target.value)
   }
   
   const submitLogin = async () => {
-    const resp = await axiosI
+    const resp = await instance
       .post('/login', { email, password })
       .then((response) => {
         if (response.status == 200) {

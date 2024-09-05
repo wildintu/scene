@@ -1,14 +1,13 @@
 import { Routes, Route } from 'react-router-dom'
 import { useContext } from 'react'
-import AuthContext from '../context/auth'
 import { Counts } from '../containers/Counts'
 import { Login } from '../containers/Login'
 import { Dashboard } from '../containers/Dashboard'
 import { Club } from '../containers/Club'
+import AuthContext from '../context/auth'
 
 export function Router() {
   const { club } = useContext(AuthContext)
-  const { email } = req.body
 
   const authenticatedRoutes = () => {
     return (
@@ -19,6 +18,7 @@ export function Router() {
           <Route index element={<Club />} />
           <Route path={`:id`} element={<Club />} />
         </Route>
+        <Route path='*' element={<Counts />} />
       </Routes>
     )
   }
@@ -34,7 +34,7 @@ export function Router() {
 
   return (
     <>
-    {club ? authenticatedRoutes() : unauthenticatedRoutes()}
+      {club ? authenticatedRoutes() : unauthenticatedRoutes()}
     </>
   )
 }

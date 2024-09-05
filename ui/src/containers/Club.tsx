@@ -1,11 +1,13 @@
-import TokenUtils from "../../utils/token"
+import TokenUtils from "../utils/token"
+import AuthContext from '../context/auth'
+//import { useContext } from 'react';
 
-  const { getClub, setClub, logout } = TokenUtils
+export function Club() {
+  //const { club, logout } = useContext(AuthContext)
 
-  const club = {
-    getClub,
-    setClub,
-    logout
-  }
-
-  export default club
+  return (
+    <>
+      sup
+    </>
+  )
+}

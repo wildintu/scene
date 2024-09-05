@@ -1,12 +1,11 @@
 import '@radix-ui/themes/styles.css'
 import './App.css'
-import { BrowserRouter } from 'react-router-dom'
 import { Theme } from '@radix-ui/themes'
 import { Nav } from './components/Nav'
 import { Router } from './components/Routes'
 import AuthContext from './context/auth'
 import { useEffect, useState } from 'react'
-import TokenUtils from '../utils/token'
+import TokenUtils from './utils/token'
 
 export function App() {
     const [club, setClub] = useState()
@@ -27,21 +26,19 @@ export function App() {
       await TokenUtils.setClub(clubData)
     }
 
-    const logout = async (clubData: any) => {
-      setClub(clubData(null))
+    const logout = async () => {
+      setClub(null)
       await TokenUtils.logout()
     }
 
   return (
     <>
-    <BrowserRouter>
       <AuthContext.Provider value={{ club, login, logout }}>
         <Theme>
           <Nav />
           <Router />
         </Theme>
       </AuthContext.Provider>
-    </BrowserRouter>
     </>
   )
 }
