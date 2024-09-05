@@ -1,6 +1,5 @@
 import TokenUtils from "../utils/token"
 import axiosUtil from '../utils/axios'
-import club from "../containers/Club"
 
 const authenticate = async (email: string, password: string) => {
   return await axiosUtil
@@ -23,7 +22,6 @@ const AuthService = {
 }
 
 const auth = {
-  AuthContext,
   authenticate,
   AuthService
 }

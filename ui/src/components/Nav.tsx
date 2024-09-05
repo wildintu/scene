@@ -27,6 +27,7 @@ export function Nav() {
       <div className='links'>
         <Link to={'/counts'} className='nav-link'>Counts</Link>
         <Link to={'/dashboard'} className='nav-link'>Dashboard</Link>
+        <Link to={'/club'} className='nav-link'>Club</Link>
       </div>
     </div>
     </>
