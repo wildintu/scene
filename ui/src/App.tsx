@@ -21,7 +21,7 @@ export function App() {
       }
     }, [])
 
-    const login = async (clubData: any) => {
+    const login = async (clubData: string) => {
       setClub(clubData)
       await TokenUtils.setClub(clubData)
     }
