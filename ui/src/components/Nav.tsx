@@ -1,42 +1,43 @@
-import { useContext } from 'react'
+// import { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import AuthContext from '../context/auth'
+// import AuthContext from '../context/auth'
+import TokenUtils from '../utils/token'
 
 export function Nav() {
-  const { club, logout } = useContext(AuthContext)
+//   const { club, logout } = useContext(AuthContext)
+const isLoggedIn = TokenUtils.isTokenValid()
+console.log('Nav', isLoggedIn)
 
-  const unauthenticatedNav = () => {
-    return (
-      <>
-    <div className="nav">
-      <img className='logo' src='/vite.svg' />
-      <div className='links'>
-        <Link to={'/login'} className='nav-link'>Login</Link>
-        <Link to={'/'} className='nav-link'>Home</Link>
-      </div>
-    </div>
-    </>
-    )
-  }
-  
-  const authenticatedNav = () => {
+const authenticatedNav = () => {
   return (
     <>
-    <div className="nav">
-      <img className='logo' src='/vite.svg' />
-      <div className='links'>
-        <Link to={'/'} className='nav-link'>Counts</Link>
-        <Link to={'/dashboard'} className='nav-link'>Dashboard</Link>
-        {/* <Link to={'/club'} className='nav-link'>Club</Link> */}
-      </div>
+  <div className="nav">
+    <img className='logo' src='/vite.svg' />
+    <div className='links'>
+      <Link to={'/counts'} className='nav-link'>Counts</Link>
+      <Link to={'/dashboard'} className='nav-link'>Dashboard</Link>
     </div>
-    </>
+  </div>
+  </>
+)
+}
+
+const unauthenticatedNav = () => {
+  return (
+    <>
+  <div className="nav">
+    <img className='logo' src='/vite.svg' />
+    <div className='links'>
+      <Link to={'/login'} className='nav-link'>Login</Link>
+    </div>
+  </div>
+  </>
   )
-  }
+}
 
-  return (
-    <>
-      {club ? unauthenticatedNav() : authenticatedNav()}
+return (
+  <>
+      {isLoggedIn ? authenticatedNav() : unauthenticatedNav()}
     </>
   )
 }

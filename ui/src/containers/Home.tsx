@@ -1,8 +1,8 @@
-export function Dashboard() {
+export function Home() {
   return (
     <>
       <div className="text">
-        Dashboard Page
+        Home Page
       </div>
     </>
   )

@@ -9,25 +9,28 @@ import TokenUtils from './utils/token'
 
 export function App() {
     const [club, setClub] = useState()
-    const jwt = TokenUtils.getClub()
+    const jwt: any = TokenUtils.getToken()
 
     useEffect(() => {
-      if (jwt) {
-        setClub(jwt)
-        console.log(jwt)
+      if (TokenUtils.isTokenValid()) {
+        TokenUtils.setClub(club)
+        TokenUtils.setToken(jwt)
       }
+      // if (jwt) {
+      //   setClub(jwt)
+      // }
       else {
           console.log('nope')
       }
     }, [])
 
-    const login = async (clubData: string) => {
+    const login = async (clubData: any) => {
       setClub(clubData)
       await TokenUtils.setClub(clubData)
     }
 
     const logout = async () => {
-      setClub(null)
+      TokenUtils.setClub(null)
       await TokenUtils.logout()
     }
 

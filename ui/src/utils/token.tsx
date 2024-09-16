@@ -4,8 +4,16 @@ const getClub = () => {
   return localStorage.getItem('club')
 }
 
-const setClub = (jwt: any) => {
-  return localStorage.setItem('club', jwt)
+const setClub = (clubData: any) => {
+  return localStorage.setItem('club', clubData)
+}
+
+const getToken = () => {
+  return localStorage.getItem('jwt')
+}
+
+const setToken = (jwt: any) => {
+  return localStorage.setItem('jwt', jwt)
 }
 
 const logout = () => {
@@ -22,9 +30,10 @@ const isTokenExpired = (token: any) => {
 }
 
 const isTokenValid = () => {
-  const jwt: any = getClub()
+  const jwt: any = getToken()
   if (jwt) {
     const data = jwtDecode(jwt)
+    console.log('data is token valid', data)
     if (data) {
       console.log('Token is Valid')
       return isTokenExpired(jwt)
@@ -32,13 +41,14 @@ const isTokenValid = () => {
       console.log('Token is NOT Valid')
       return false
     }
-    console.log(jwt)
   }
 }
 
 const TokenUtils = {
   getClub: getClub,
   setClub: setClub,
+  getToken: getToken,
+  setToken: setToken,
   logout: logout,
   decodeJWT: decodeJWT,
   isTokenExpired: isTokenExpired,

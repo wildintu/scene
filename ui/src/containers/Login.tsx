@@ -11,14 +11,11 @@ export function Login() {
   const [password, setPassword] = useState<string>('')
 
   const updateEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const email = event.currentTarget.value
     setEmail(event.target.value)
-    console.log(email)
   }
   
   const updatePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value)
-    console.log(password)
   }
   
   const navigate = useNavigate()
@@ -29,17 +26,15 @@ export function Login() {
     setIsLoading(true)
     try{
       const resp = await instance.post('/login', { email, password })
-      console.log(resp.data)
       if (resp.status == 200) {
-            const jwt = resp.data
-            localStorage.setItem('jwt', jwt)
-            
-            const clubData = jwtDecode(jwt)
-            localStorage.setItem('club', JSON.stringify(clubData))
-            
-            TokenUtils.setClub(clubData)
-
-            navigate('/dashboard')
+        const jwt = resp.data
+        const clubData = jwtDecode(jwt)
+        TokenUtils.setClub(clubData)
+        TokenUtils.setToken(jwt)
+        TokenUtils.isTokenValid()
+        console.log('set clubdata', clubData)
+        console.log('set jwt', jwt)
+        navigate('/dashboard')
           } else {
             console.log(resp.data)
           }

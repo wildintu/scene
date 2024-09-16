@@ -2,7 +2,6 @@
 // import { useContext } from 'react';
 
 export function Club() {
-  // const { club } = useContext(AuthContext)
 
   return (
     <>
