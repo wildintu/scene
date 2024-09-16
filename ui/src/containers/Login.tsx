@@ -1,14 +1,16 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { Button, TextField, Heading, Text } from '@radix-ui/themes'
 import instance from '../utils/axios'
 import { useNavigate } from 'react-router-dom'
 import { jwtDecode } from "jwt-decode"
 import TokenUtils from '../utils/token'
+import AuthContext from '../context/auth'
 
 
 export function Login() {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const { login } = useContext(AuthContext)
 
   const updateEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
@@ -20,34 +22,27 @@ export function Login() {
   
   const navigate = useNavigate()
   
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-
   const submitLogin = async () => {
-    setIsLoading(true)
     try{
       const resp = await instance.post('/login', { email, password })
       if (resp.status == 200) {
         const jwt = resp.data
-        const clubData = jwtDecode(jwt)
-        TokenUtils.setClub(clubData)
-        TokenUtils.setToken(jwt)
-        TokenUtils.isTokenValid()
-        console.log('set clubdata', clubData)
-        console.log('set jwt', jwt)
+        login(jwt)
         navigate('/dashboard')
-          } else {
-            console.log(resp.data)
-          }
-      } catch (error) {
-        if (error.response) {
-          console.error('Error:', error.response.data)
-        }
-      } finally {
-        setIsLoading(false)
+      } else {
+        console.log(resp.data)
       }
-      return (
-        console.log('made it!')
-      )
+
+    } catch (error) {
+      console.log('catch')
+      console.log(error)
+    } finally {
+      console.log('finally')
+    }
+
+    return (
+      console.log('made it!')
+    )
   }
   
   const validateEmail = (email: string): boolean => {

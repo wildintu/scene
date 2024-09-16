@@ -1,13 +1,5 @@
 import { jwtDecode } from "jwt-decode"
 
-const getClub = () => {
-  return localStorage.getItem('club')
-}
-
-const setClub = (clubData: any) => {
-  return localStorage.setItem('club', clubData)
-}
-
 const getToken = () => {
   return localStorage.getItem('jwt')
 }
@@ -17,7 +9,7 @@ const setToken = (jwt: any) => {
 }
 
 const logout = () => {
-  localStorage.removeItem('club')
+  localStorage.removeItem('jwt')
 }
 
 const decodeJWT = (jwt: any) => {
@@ -45,8 +37,6 @@ const isTokenValid = () => {
 }
 
 const TokenUtils = {
-  getClub: getClub,
-  setClub: setClub,
   getToken: getToken,
   setToken: setToken,
   logout: logout,

@@ -1,15 +1,13 @@
 import { Routes, Route, BrowserRouter, createBrowserRouter } from 'react-router-dom'
-// import { useContext } from 'react'
+import { useContext } from 'react'
 import { Counts } from '../containers/Counts'
 import { Login } from '../containers/Login'
 import { Dashboard } from '../containers/Dashboard'
 // import { Club } from '../containers/Club'
-// import AuthContext from '../context/auth'
-import TokenUtils from '../utils/token'
+import AuthContext from '../context/auth'
 
 export function Router() {
-  const isLoggedIn = TokenUtils.isTokenValid()
-  console.log('Router', isLoggedIn)
+  const { club } = useContext(AuthContext)
   
   const authenticatedRoutes = () => {
     return (
@@ -32,7 +30,7 @@ export function Router() {
 
   return (
     <>
-      {isLoggedIn ? authenticatedRoutes() : unauthenticatedRoutes()}
+      {club ? authenticatedRoutes() : unauthenticatedRoutes()}
     </>
   )
 }

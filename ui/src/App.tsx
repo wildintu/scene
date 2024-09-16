@@ -12,26 +12,21 @@ export function App() {
     const jwt: any = TokenUtils.getToken()
 
     useEffect(() => {
-      if (TokenUtils.isTokenValid()) {
-        TokenUtils.setClub(club)
-        TokenUtils.setToken(jwt)
-      }
-      // if (jwt) {
-      //   setClub(jwt)
-      // }
-      else {
-          console.log('nope')
+      if (TokenUtils.getToken()) {
+        setClub(jwt)
+      } else {
+        console.log('nope')
       }
     }, [])
 
-    const login = async (clubData: any) => {
-      setClub(clubData)
-      await TokenUtils.setClub(clubData)
+    const login = async (jwt: any) => {
+      setClub(jwt)
+      await TokenUtils.setToken(jwt)
     }
 
     const logout = async () => {
-      TokenUtils.setClub(null)
-      await TokenUtils.logout()
+      setClub(null)
+      await TokenUtils.setToken(null)
     }
 
   return (
