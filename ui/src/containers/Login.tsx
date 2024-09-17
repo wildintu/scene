@@ -2,8 +2,6 @@ import { useState, useContext } from 'react'
 import { Button, TextField, Heading, Text } from '@radix-ui/themes'
 import instance from '../utils/axios'
 import { useNavigate } from 'react-router-dom'
-import { jwtDecode } from "jwt-decode"
-import TokenUtils from '../utils/token'
 import AuthContext from '../context/auth'
 
 

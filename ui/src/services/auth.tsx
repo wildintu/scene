@@ -6,7 +6,7 @@ const authenticate = async (email: string, password: string) => {
     .post('/auth/login', { email, password })
     .then((response: any) => {
       if (response.status == 200) {
-        TokenUtils.setClub(response.data.token)
+        TokenUtils.setToken(response.data.token)
         console.log(response.data.token)
       }
       return response
