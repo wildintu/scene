@@ -5,25 +5,26 @@ import { Login } from '../containers/Login'
 import { Dashboard } from '../containers/Dashboard'
 import { Home } from '../containers/Home'
 import { Clubs } from '../containers/Clubs'
-import { Club } from '../containers/Club'
-import { Venue } from '../containers/Venue'
-import { Scene } from '../containers/Scene'
+import { Venues } from '../containers/Venues'
+import { Scenes } from '../containers/Scenes'
 import AuthContext from '../context/auth'
+// import { Club } from '../containers/Club'
 
 export function Router() {
-  const { club } = useContext(AuthContext)
+  const { club, logout } = useContext(AuthContext)
   
   const authenticatedRoutes = () => {
     return (
       <Routes>
-        <Route path='/counts' element={<Counts />} />
+        <Route path='/scenes' element={<Scenes />} />
+        <Route path='/venues' element={<Venues />} />
+        <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/clubs'>
           <Route index element={<Clubs />} />
-          <Route path={':id'} element={<Club />} />
+          {/* <Route path={':id'} element={<Club />} /> */}
           {/* <Route path={'new'} element={<CreateClub />} /> */}
         </Route>
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='*' element={<Counts />} />
+        <Route path='/logout' element={<Home />} />
       </Routes>
     )
   }
@@ -32,8 +33,8 @@ export function Router() {
     return (
         <Routes>
           <Route path='/login' element={<Login />} />
-          <Route path='/scene' element={<Scene />} />
-          <Route path='/venue' element={<Venue />} />
+          <Route path='/scenes' element={<Scenes />} />
+          <Route path='/venues' element={<Venues />} />
           <Route path='*' element={<Home />} />
         </Routes>
     )
