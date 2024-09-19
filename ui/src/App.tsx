@@ -12,8 +12,9 @@ export function App() {
     const jwt: any = TokenUtils.getToken()
 
     useEffect(() => {
-      if (TokenUtils.getToken()) {
+      if (jwt) {
         setClub(jwt)
+        console.log(club)
       } else {
         console.log('nope')
       }
@@ -26,7 +27,7 @@ export function App() {
 
     const logout = async () => {
       setClub(null)
-      await TokenUtils.setToken(null)
+      await TokenUtils.logout()
     }
 
   return (

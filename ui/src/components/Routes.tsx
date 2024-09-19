@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
 import { useContext } from 'react'
-import { Counts } from '../containers/Counts'
 import { Login } from '../containers/Login'
 import { Dashboard } from '../containers/Dashboard'
 import { Home } from '../containers/Home'
@@ -24,7 +23,7 @@ export function Router() {
           {/* <Route path={':id'} element={<Club />} /> */}
           {/* <Route path={'new'} element={<CreateClub />} /> */}
         </Route>
-        <Route path='/logout' element={<Home />} />
+        <Route path='*' element={<Dashboard />} />
       </Routes>
     )
   }

@@ -15,7 +15,7 @@ export function Nav() {
         <Link to={'/venues'} className='nav-link'>Venues</Link>
         <Link to={'/clubs'} className='nav-link'>Clubs</Link>
         <Link to={'/dashboard'} className='nav-link'>Dashboard</Link>
-        <Link to={'/home'} className='nav-link' onClick={logout}>Logout</Link>
+        <Link to={'/'} className='nav-link' onClick={logout}>Logout</Link>
       </div>
     </div>
     </>
