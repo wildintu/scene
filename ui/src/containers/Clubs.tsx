@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import instance from '../utils/axios'
 import { Table } from '@radix-ui/themes'
 import { Button } from '@radix-ui/themes'
-import { ToastContainer } from 'react-toastify'
 import { Link } from 'react-router-dom'
 
 export function Clubs() {
@@ -27,13 +26,13 @@ export function Clubs() {
           <Table.Row>
             <Table.ColumnHeaderCell>ID</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell>Club ID</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+            {/* <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell> */}
             <Table.ColumnHeaderCell>Name</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Phone</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Address</Table.ColumnHeaderCell>
+            {/* <Table.ColumnHeaderCell>Phone</Table.ColumnHeaderCell> */}
+            {/* <Table.ColumnHeaderCell>Address</Table.ColumnHeaderCell> */}
             <Table.ColumnHeaderCell>City</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell>State</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Zip</Table.ColumnHeaderCell>
+            {/* <Table.ColumnHeaderCell>Zip</Table.ColumnHeaderCell> */}
             <Table.ColumnHeaderCell>Website</Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
@@ -43,23 +42,22 @@ export function Clubs() {
               <Table.Row key={i.id}>
                 <Table.Cell>{i.id}</Table.Cell>
                 <Table.Cell>{i.club_id}</Table.Cell>
-                <Table.Cell>{i.email}</Table.Cell>
+                {/* <Table.Cell>{i.email}</Table.Cell> */}
                 {/* <Table.Cell>{i.name}</Table.Cell> */}
                 <Table.Cell><Link to={`/clubs/${i.id}`}>{i.name}</Link></Table.Cell>
-                <Table.Cell>{i.phone}</Table.Cell>
-                <Table.Cell>{i.address}</Table.Cell>
+                {/* <Table.Cell>{i.phone}</Table.Cell> */}
+                {/* <Table.Cell>{i.address}</Table.Cell> */}
                 <Table.Cell>{i.city}</Table.Cell>
                 <Table.Cell>{i.state}</Table.Cell>
-                <Table.Cell>{i.zip}</Table.Cell>
+                {/* <Table.Cell>{i.zip}</Table.Cell> */}
                 <Table.Cell>{i.website}</Table.Cell>
-                <Table.Cell><Link to={`/clubs/${i.id}`}><Button color="cyan" variant="soft">Edit</Button></Link></Table.Cell>
+                <Table.Cell><Link to={`/clubs/${i.id}`}><Button color="cyan" variant="soft">View</Button></Link></Table.Cell>
                 {/* <Table.Cell><Button color="red" variant="soft" onClick={() => deleteClub(i.id)}>Delete</Button></Table.Cell> */}
               </Table.Row>
             )
           })}
         </Table.Body>
       </Table.Root>
-      <ToastContainer position='top-center' />
     </div>
     </>
   )

@@ -35,6 +35,10 @@
   padding: 2em;
 }
 
+.card-form {
+  width: 600px;
+}
+
 .text {
   color: black;
 }

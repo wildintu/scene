@@ -8,6 +8,7 @@ import { Venues } from '../containers/Venues'
 import { Scenes } from '../containers/Scenes'
 import AuthContext from '../context/auth'
 import { Club } from '../containers/Club'
+import { ClubForm } from '../containers/ClubForm'
 
 export function Router() {
   const { club, logout } = useContext(AuthContext)
@@ -21,7 +22,7 @@ export function Router() {
         <Route path='/clubs'>
           <Route index element={<Clubs />} />
           <Route path={'/clubs/:id'} element={<Club />} />
-          {/* <Route path={'new'} element={<CreateClub />} /> */}
+          <Route path={'/clubs/:id/edit'} element={<ClubForm />} />
         </Route>
         <Route path='*' element={<Dashboard />} />
       </Routes>
