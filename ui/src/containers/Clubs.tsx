@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import instance from '../utils/axios'
 import { Table } from '@radix-ui/themes'
-// import { Button } from '@radix-ui/themes'
+import { Button } from '@radix-ui/themes'
 import { ToastContainer } from 'react-toastify'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export function Clubs() {
   const [clubs, setClubs] = useState([])
@@ -44,15 +44,16 @@ export function Clubs() {
                 <Table.Cell>{i.id}</Table.Cell>
                 <Table.Cell>{i.club_id}</Table.Cell>
                 <Table.Cell>{i.email}</Table.Cell>
-                <Table.Cell>{i.name}</Table.Cell>
+                {/* <Table.Cell>{i.name}</Table.Cell> */}
+                <Table.Cell><Link to={`/clubs/${i.id}`}>{i.name}</Link></Table.Cell>
                 <Table.Cell>{i.phone}</Table.Cell>
                 <Table.Cell>{i.address}</Table.Cell>
                 <Table.Cell>{i.city}</Table.Cell>
                 <Table.Cell>{i.state}</Table.Cell>
                 <Table.Cell>{i.zip}</Table.Cell>
                 <Table.Cell>{i.website}</Table.Cell>
-                {/* <Table.Cell><Link to={`/club/${i.id}`}><Button color="cyan" variant="soft">Edit</Button></Link></Table.Cell>
-                <Table.Cell><Button color="red" variant="soft" onClick={() => deleteClub(i.id)}>Delete</Button></Table.Cell> */}
+                <Table.Cell><Link to={`/clubs/${i.id}`}><Button color="cyan" variant="soft">Edit</Button></Link></Table.Cell>
+                {/* <Table.Cell><Button color="red" variant="soft" onClick={() => deleteClub(i.id)}>Delete</Button></Table.Cell> */}
               </Table.Row>
             )
           })}
