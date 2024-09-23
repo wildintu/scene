@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import instance from '../utils/axios'
-import { Button, DataList } from '@radix-ui/themes'
-import { Link } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
-import { ClubForm } from '../containers/ClubForm'
+import { Button, DataList, Heading, Grid, Flex } from '@radix-ui/themes'
+import { useParams, useNavigate } from 'react-router-dom'
 
 export function Club() {
   const [club, setClub] = useState()
@@ -19,6 +17,16 @@ export function Club() {
   const [website, setWebsite] = useState()
   
   const { id } = useParams()
+
+  const navigate = useNavigate()
+
+  const cancel = () => {
+    navigate('/clubs')
+  }
+
+  const editClub = () => {
+    navigate(`/clubs/${id}/edit`)
+  }
   
   useEffect(() => {
     const getClub = async (id: any) => {
@@ -42,9 +50,9 @@ export function Club() {
   if (club) {
       return (
         <>
-        <div className='card'>
-          <h2>{name}</h2>
-          <div className='align-center'>
+        <Grid className='card container'>
+          <Heading size={'4'}>{name}</Heading>
+        <Flex gap={'3'}>
             <DataList.Root>
               <DataList.Item align='center'>
                   <DataList.Label>ID</DataList.Label>
@@ -87,12 +95,12 @@ export function Club() {
                   <DataList.Value>{website}</DataList.Value>
               </DataList.Item>
             </DataList.Root>
-          </div>
-        </div>
-        <div>
-          <Link to={`/clubs/${id}/edit`}><Button variant='soft' color='cyan'>Edit {name}</Button></Link>
-        </div>
-          <Link to={'/clubs'}><Button variant='outline' className='form-submit'>Cancel</Button></Link>
+        </Flex>
+          <Flex gap={'3'} direction={'column'}>
+            <Button variant='solid' onClick={ editClub }>Edit Club</Button>
+            <Button variant='soft' onClick={ cancel }>Cancel</Button>
+          </Flex>
+        </Grid>
         </>
       )
     }

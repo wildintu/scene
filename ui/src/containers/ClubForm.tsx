@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import instance from '../utils/axios'
-import { TextField, Text, Button, Heading } from '@radix-ui/themes'
+import { TextField, Text, Button, Heading, Flex, Grid } from '@radix-ui/themes'
 import { ToastContainer, toast } from 'react-toastify'
-import { Link } from 'react-router-dom'
 import { useNavigate, useParams } from 'react-router-dom'
 
 export function ClubForm() {
@@ -78,6 +77,10 @@ export function ClubForm() {
     document.querySelectorAll('input').forEach(e => e.value = '')
   }
 
+  const cancel = () => {
+    navigate('/clubs')
+  }
+
   const submitForm = async () => {
     try {
       const resp = await instance.put(`/club/${id}`, {
@@ -114,10 +117,8 @@ export function ClubForm() {
   if (club) {
     return (
       <>
-      <div className='card'>
-        <div>
-          <Heading align={'center'}>Edit {name}</Heading>
-        </div>
+      <Grid className='card container'>
+          <Heading size={'3'}>Edit {name} Below</Heading>
           <Text align='center' as ='div'>
             <TextField.Root size='2' placeholder='email' className='form-input' onChange={ handleEmailChange } value={ email } />
             <TextField.Root size='2' placeholder='name' className='form-input' onChange={ handleNameChange } value={ name } />
@@ -128,10 +129,12 @@ export function ClubForm() {
             <TextField.Root size='2' placeholder='zip' className='form-input' onChange={ handleZipChange } value={zip} />
             <TextField.Root size='2' placeholder='website' className='form-input' onChange={ handleWebsiteChange } value={website} />
           </Text>
-          <Button className='form-submit' onClick={ submitForm }>Update Club</Button>
-          <Link to={'/clubs'}><Button variant='outline' className='form-submit'>Cancel</Button></Link>
-        </div>
+          <Flex gap={'3'} direction={'column'}>
+            <Button variant='solid' onClick={ submitForm }>Submit</Button>
+            <Button variant='soft' onClick={ cancel }>Cancel</Button>
+          </Flex>
         <ToastContainer position='top-center' />
+      </Grid>
       </>
     )
   } else {

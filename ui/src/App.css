@@ -35,6 +35,10 @@
   padding: 2em;
 }
 
+.container {
+  display: inline-grid
+}
+
 .card-form {
   width: 600px;
 }
