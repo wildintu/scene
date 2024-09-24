@@ -34,13 +34,20 @@ export async function createClub(body: any) {
 
 export async function updateClub(id: Number, params: any) {
   const { club_id, email, password, name, phone, address, city, state, zip, website } = params
-  const hashedPassword = await bcrypt.hash(password, 10)
+  if (password) {
+    const hashedPassword = await bcrypt.hash(password, 10)
+  } else {
+    const hashedPassword = null
+  }
+
+  console.log(password)
+
   return await prisma.club.update({
     where: { id: Number(id) },
     data: {
       club_id: club_id,
       email: email,
-      encrypted_password: hashedPassword,
+      encrypted_password: password || undefined,
       name: name,
       phone: phone,
       address: address,

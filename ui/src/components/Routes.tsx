@@ -11,7 +11,7 @@ import { Club } from '../containers/Club'
 import { ClubForm } from '../containers/ClubForm'
 
 export function Router() {
-  const { club, logout } = useContext(AuthContext)
+  const { club } = useContext(AuthContext)
   
   const authenticatedRoutes = () => {
     return (
