@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 export function ClubForm() {
   const [club, setClub] = useState()
 
+  const [club_id, setClubId] = useState()
   const [email, setEmail] = useState()
   const [name, setName] = useState()
   const [phone, setPhone] = useState()
@@ -27,6 +28,7 @@ export function ClubForm() {
       return await instance.get(`/club/${id}`)
       .then((response) => {
         setClub(response.data)
+        setClubId(response.data.club_id)
         setEmail(response.data.email)
         setName(response.data.name)
         setPhone(response.data.phone)
@@ -37,9 +39,12 @@ export function ClubForm() {
         setWebsite(response.data.website)
       })
     }
-    console.log(id)
     getClub(id)
   }, [])
+
+  const handleClubIdChange = (event: any) => {
+    setClubId(event.target.value)
+  }
 
   const handleEmailChange = (event: any) => {
     setEmail(event.target.value)
@@ -78,12 +83,13 @@ export function ClubForm() {
   }
 
   const cancel = () => {
-    navigate('/clubs')
+    navigate(`/clubs/${id}`)
   }
 
   const submitForm = async () => {
     try {
       const resp = await instance.put(`/club/${id}`, {
+        club_id,
         email,
         name,
         phone,
@@ -93,9 +99,11 @@ export function ClubForm() {
         zip,
         website
       })
+      console.log(resp)
       if (resp.status == 200) {
         notify('Successfully updated club!')
         clearFields()
+        setClubId(club_id)
         setEmail(email)
         setName(name)
         setPhone(phone)
@@ -120,6 +128,7 @@ export function ClubForm() {
       <Grid className='card container'>
           <Heading size={'3'}>Edit {name} Below</Heading>
           <Text align='center' as ='div'>
+            <TextField.Root size='2' placeholder='club id' className='form-input' onChange={ handleClubIdChange } value={ club_id } />
             <TextField.Root size='2' placeholder='email' className='form-input' onChange={ handleEmailChange } value={ email } />
             <TextField.Root size='2' placeholder='name' className='form-input' onChange={ handleNameChange } value={ name } />
             <TextField.Root size='2' placeholder='phone' className='form-input' onChange={ handlePhoneChange } value={phone} />
