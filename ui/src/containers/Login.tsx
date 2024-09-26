@@ -69,13 +69,13 @@ export function Login() {
   return (
     <>
     <div className='align-center'>
-        <div className='login'>
+        <div data-testid='login-page' className='login'>
         <Heading m='10px'>Welcome to Scene</Heading>
         <Text className='heading'>Please continue with your email and password.</Text>
         <form onSubmit={handleSubmit}>
-          <TextField.Root id='email' className='input-fields' size="2" placeholder='Email' onChange={updateEmail} />
-          <TextField.Root id='password' className='input-fields' size="2" placeholder='Password' onChange={updatePassword} />
-          <Button className='button' type='submit'>Submit</Button>
+          <TextField.Root id='login-email' className='input-fields' size="2" placeholder='Email' data-testid='login-email' onChange={updateEmail} />
+          <TextField.Root id='login-password' className='input-fields' size="2" placeholder='Password' data-testid='login-password' onChange={updatePassword} />
+          <Button id='login-submit' className='button' type='submit' data-testid='login-submit'>Submit</Button>
         </form>
         </div>
     </div>

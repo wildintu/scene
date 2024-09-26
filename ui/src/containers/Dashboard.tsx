@@ -1,10 +1,10 @@
+import { Heading } from '@radix-ui/themes'
+
 export function Dashboard() {
   
   return (
     <>
-      <div className="text">
-        Dashboard Page
-      </div>
+    <Heading as='h1'>Dashboard Page</Heading>
     </>
   )
 }

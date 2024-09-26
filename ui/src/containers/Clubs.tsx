@@ -44,7 +44,7 @@ export function Clubs() {
                 <Table.Cell>{i.club_id}</Table.Cell>
                 {/* <Table.Cell>{i.email}</Table.Cell> */}
                 {/* <Table.Cell>{i.name}</Table.Cell> */}
-                <Table.Cell><Link to={`/clubs/${i.id}`}>{i.name}</Link></Table.Cell>
+                <Table.Cell data-testid='club-name'><Link to={`/clubs/${i.id}`}>{i.name}</Link></Table.Cell>
                 {/* <Table.Cell>{i.phone}</Table.Cell> */}
                 {/* <Table.Cell>{i.address}</Table.Cell> */}
                 <Table.Cell>{i.city}</Table.Cell>

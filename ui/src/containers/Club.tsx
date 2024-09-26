@@ -50,7 +50,7 @@ export function Club() {
   if (club) {
       return (
         <>
-        <Grid className='card container'>
+        <Grid data-testid='club-show-page' className='card container'>
           <Heading size={'4'}>{name}</Heading>
         <Flex gap={'3'}>
             <DataList.Root>
