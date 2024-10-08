@@ -11,8 +11,8 @@ test.describe('Club login', () => {
     await expect(page.locator('h1')).toContainText(['Dashboard Page'])
   })
 
-  // test('should navigate to clubs and view club show page', async ({ page }) => {
-  //   await page.goto('http://localhost:5173/clubs')
-  //   // await page.getByTestId('club-name').first().click()
-  // })
+  test('should navigate to clubs', async ({ page }) => {
+    await page.goto('http://localhost:5173/clubs')
+    // await page.getByTestId(`{i.name}`).click()
+  })
 })

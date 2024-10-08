@@ -3,6 +3,7 @@ import instance from '../utils/axios'
 import { Table } from '@radix-ui/themes'
 import { Button } from '@radix-ui/themes'
 import { Link } from 'react-router-dom'
+import { ClubForm } from '../containers/ClubForm'
 
 export function Clubs() {
   const [clubs, setClubs] = useState([])
@@ -34,6 +35,8 @@ export function Clubs() {
             <Table.ColumnHeaderCell>State</Table.ColumnHeaderCell>
             {/* <Table.ColumnHeaderCell>Zip</Table.ColumnHeaderCell> */}
             <Table.ColumnHeaderCell>Website</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell></Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell><Button color="green" variant="solid" onClick={() => ClubForm.newClub()}>New Club</Button></Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -44,7 +47,7 @@ export function Clubs() {
                 <Table.Cell>{i.club_id}</Table.Cell>
                 {/* <Table.Cell>{i.email}</Table.Cell> */}
                 {/* <Table.Cell>{i.name}</Table.Cell> */}
-                <Table.Cell data-testid='club-name'><Link to={`/clubs/${i.id}`}>{i.name}</Link></Table.Cell>
+                <Table.Cell data-testid={i.name}><Link to={`/clubs/${i.id}`}>{i.name}</Link></Table.Cell>
                 {/* <Table.Cell>{i.phone}</Table.Cell> */}
                 {/* <Table.Cell>{i.address}</Table.Cell> */}
                 <Table.Cell>{i.city}</Table.Cell>
@@ -52,7 +55,7 @@ export function Clubs() {
                 {/* <Table.Cell>{i.zip}</Table.Cell> */}
                 <Table.Cell>{i.website}</Table.Cell>
                 <Table.Cell><Link to={`/clubs/${i.id}`}><Button color="cyan" variant="soft">View</Button></Link></Table.Cell>
-                {/* <Table.Cell><Button color="red" variant="soft" onClick={() => deleteClub(i.id)}>Delete</Button></Table.Cell> */}
+                <Table.Cell><Button color="red" variant="soft" onClick={() => ClubForm.deleteClub(i.id)}>Delete</Button></Table.Cell>
               </Table.Row>
             )
           })}
