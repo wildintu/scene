@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import instance from '../utils/axios'
-import { Table } from '@radix-ui/themes'
+import { Box, Heading, Table } from '@radix-ui/themes'
 import { Button } from '@radix-ui/themes'
-import { Link } from 'react-router-dom'
-import { ClubForm } from '../containers/ClubForm'
+import { Link, useNavigate } from 'react-router-dom'
 
 export function Clubs() {
   const [clubs, setClubs] = useState([])
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getClubs = async () => {
@@ -18,10 +19,14 @@ export function Clubs() {
     getClubs()
   }, [])
 
+  const newClub = () => {
+    navigate(`/clubs/new`)
+  }
+
   return (
-    <>
-    <div className='card'>
-      <h2>CLUBS PAGE</h2>
+    <Box flexBasis='100%'>
+      <Heading size={'3'}>CLUBS PAGE</Heading>
+      <Button color="green" variant="outline" onClick={ newClub }>New Club</Button>
       <Table.Root variant='surface'>
         <Table.Header>
           <Table.Row>
@@ -35,8 +40,8 @@ export function Clubs() {
             <Table.ColumnHeaderCell>State</Table.ColumnHeaderCell>
             {/* <Table.ColumnHeaderCell>Zip</Table.ColumnHeaderCell> */}
             <Table.ColumnHeaderCell>Website</Table.ColumnHeaderCell>
+            {/* <Table.ColumnHeaderCell></Table.ColumnHeaderCell> */}
             <Table.ColumnHeaderCell></Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell><Button color="green" variant="solid" onClick={() => ClubForm.newClub()}>New Club</Button></Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -55,13 +60,11 @@ export function Clubs() {
                 {/* <Table.Cell>{i.zip}</Table.Cell> */}
                 <Table.Cell>{i.website}</Table.Cell>
                 <Table.Cell><Link to={`/clubs/${i.id}`}><Button color="cyan" variant="soft">View</Button></Link></Table.Cell>
-                <Table.Cell><Button color="red" variant="soft" onClick={() => ClubForm.deleteClub(i.id)}>Delete</Button></Table.Cell>
               </Table.Row>
             )
           })}
         </Table.Body>
       </Table.Root>
-    </div>
-    </>
+    </Box>
   )
 }

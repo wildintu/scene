@@ -1,16 +1,15 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import instance from '../utils/axios'
 import { TextField, Text, Button, Heading, Flex, Grid } from '@radix-ui/themes'
 import { ToastContainer, toast } from 'react-toastify'
 import { useNavigate, useParams } from 'react-router-dom'
-import AuthContext from '../context/auth'
 
-export function ClubForm() {
+export function UpdateClubForm() {
   const [club, setClub] = useState()
 
   const [club_id, setClubId] = useState()
   const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+  // const [password, setPassword] = useState()
   const [name, setName] = useState()
   const [phone, setPhone] = useState()
   const [address, setAddress] = useState()
@@ -22,7 +21,6 @@ export function ClubForm() {
   const { id } = useParams()
 
   const navigate = useNavigate()
-  const { submit } = useContext(AuthContext)
 
   const notify = (msg: string) => toast(msg)
 
@@ -52,10 +50,6 @@ export function ClubForm() {
   
   const handleEmailChange = (event: any) => {
     setEmail(event.target.value)
-  }
-
-  const handlePasswordChange = (event: any) => {
-    setPassword(event.target.value)
   }
   
   const handleNameChange = (event: any) => {
@@ -94,44 +88,14 @@ export function ClubForm() {
     navigate(`/clubs/${id}`)
   }
 
-  const newClub = async () => {
-    console.log('submit')
-    const body = { club_id, email, password, name, phone, address, city, state, zip, website }
-    const response = await instance.post("/club/", body).then((response) => {
-            if (response.status == 200) {
-              setClubId(club_id)
-              setEmail(email)
-              setPassword(password)
-              setName(name)
-              setPhone(phone)
-              setAddress(address)
-              setCity(city)
-              setState(state)
-              setZip(zip)
-              setWebsite(website)
-                // const jwt = response.data.token;
-                // localStorage.setItem("club", jwt);
-                submit()
-                console.log();
-
-                // Put your notification toast here
-                navigate('/clubs')
-            }
-            else {
-                console.log(response.data);
-            }
-        })}
-
   const deleteClub = async(id: any) => {
     return await instance.delete(`/club/${id}`)
     .then((response) => {
-      setClub(response.data)
-      console.log(club)
-      deleteClub(id)
+      navigate('/clubs')
     })
   }
 
-  const updateForm = async () => {
+  const updateClub = async () => {
     try {
       const resp = await instance.put(`/club/${id}`, {
         club_id,
@@ -171,7 +135,6 @@ export function ClubForm() {
     return (
       <>
       <Grid className='card container'>
-      <Button color="green" variant="solid" onClick={() => newClub()}>New Club</Button>
           <Heading size={'3'}>Edit {name} Below</Heading>
           <Text align='center' as ='div'>
             <TextField.Root size='2' placeholder='club id' className='form-input' onChange={ handleClubIdChange } value={ club_id } />
@@ -185,7 +148,8 @@ export function ClubForm() {
             <TextField.Root size='2' placeholder='website' className='form-input' onChange={ handleWebsiteChange } value={website} />
           </Text>
           <Flex gap={'3'} direction={'column'}>
-            <Button variant='solid' onClick={ updateForm }>Submit</Button>
+            <Button variant='solid' onClick={ updateClub }>Submit</Button>
+            <Button color="red" variant="soft" onClick={ deleteClub }>Delete Club</Button>
             <Button variant='soft' onClick={ cancel }>Cancel</Button>
           </Flex>
         <ToastContainer position='top-center' />
