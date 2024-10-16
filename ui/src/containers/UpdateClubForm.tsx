@@ -9,7 +9,6 @@ export function UpdateClubForm() {
 
   const [club_id, setClubId] = useState()
   const [email, setEmail] = useState()
-  // const [password, setPassword] = useState()
   const [name, setName] = useState()
   const [phone, setPhone] = useState()
   const [address, setAddress] = useState()
@@ -108,7 +107,6 @@ export function UpdateClubForm() {
         zip,
         website
       })
-      console.log(resp)
       if (resp.status == 200) {
         notify('Successfully updated club!')
         clearFields()

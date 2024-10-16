@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import instance from '../utils/axios'
 import { TextField, Text, Button, Heading, Flex } from '@radix-ui/themes'
 import * as Form from "@radix-ui/react-form";
-import { ToastContainer } from 'react-toastify'
-import { useNavigate, useParams } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
 
 export function NewClubForm() {
   const [club, setClub] = useState()
@@ -22,6 +23,48 @@ export function NewClubForm() {
   const { id } = useParams()
 
   const navigate = useNavigate()
+
+  const notify = (msg: string) => toast(msg)
+
+  useEffect(() => {
+    const getClub = async () => {
+      return await instance.get('/club')
+      .then((response) => {
+        setClub(response.data)
+        setClubId(response.data)
+        setEmail(response.data)
+        setName(response.data)
+        setPhone(response.data)
+        setAddress(response.data)
+        setCity(response.data)
+        setState(response.data)
+        setZip(response.data)
+        setWebsite(response.data)
+      })
+    }
+    getClub()
+  }, [])
+
+  // useEffect(() => {
+  //   const getClub = async () => {
+  //     return await instance.get(`/club/`)
+  //     .then((response) => {
+  //       setClub(club)
+  //       setClubId(club_id)
+  //       setEmail(email)
+  //       setPassword(password)
+  //       setName(name)
+  //       setPhone(phone)
+  //       setAddress(address)
+  //       setCity(city)
+  //       setState(state)
+  //       setZip(zip)
+  //       setWebsite(website)
+  //     })
+  //   }
+  //   getClub()
+  // }, [])
+
   
   const handleClubIdChange = (event: any) => {
     setClubId(event.target.value)
@@ -67,41 +110,31 @@ export function NewClubForm() {
     document.querySelectorAll('input').forEach(e => e.value = '')
   }
 
-  const newClub = async () => {
-    const body = { id: Number, club_id: Number, email: String, password: String, name: String, phone: String, address: String, city: String, state: String, zip: Number, website: String }
-    const response = await instance.post("/club/", body)
-      .then((response) => {
-            if (response.status == 200) {
-                navigate('/clubs')
-            }
-            else {
-                console.log(response.data);
-            }
-        })}
-  
   const cancel = () => {
-    navigate(`/clubs/`)
+    navigate('/clubs')
   }
 
-  useEffect(() => {
-    const getClub = async (id: any) => {
-      return await instance.get(`/club/`)
-      .then((response) => {
-        setClub(club)
-        setClubId(club_id)
-        setEmail(email)
-        setPassword(password)
-        setName(name)
-        setPhone(phone)
-        setAddress(address)
-        setCity(city)
-        setState(state)
-        setZip(zip)
-        setWebsite(website)
-      })
+  const newClub = async () => {
+    const resp = await instance.post("/club/", {
+      club_id,
+      email,
+      password,
+      name,
+      phone,
+      address,
+      city,
+      state,
+      zip,
+      website
+    })
+    if (resp.status == 200) {
+      notify('Successfully updated club!')
+      navigate('/clubs')
+    } else {
+      console.log(resp.data);
     }
-    getClub(id)
-  }, [])
+  }
+  
 
     return (
       <Form.Root className='card container'>
