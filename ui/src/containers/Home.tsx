@@ -6,7 +6,7 @@ export function Home() {
     <Box className='card'>
       <Heading className='padding' size={'8'} >Scene Club</Heading>
       <a href='http://localhost:5173/login'>
-        <img src={'../../public/dogClubHomeImage.jpeg'} className='photo' />
+        <img src={'../../dogClubHomeImage.jpeg'} className='photo' />
       </a>
     </Box>
   )

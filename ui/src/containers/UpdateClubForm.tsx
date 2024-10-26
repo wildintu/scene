@@ -89,7 +89,7 @@ export function UpdateClubForm() {
 
   const deleteClub = async(id: any) => {
     return await instance.delete(`/club/${id}`)
-    .then((response) => {
+    .then((resp) => {
       navigate('/clubs')
     })
   }

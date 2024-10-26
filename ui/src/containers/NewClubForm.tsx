@@ -4,7 +4,7 @@ import { TextField, Text, Button, Heading, Flex } from '@radix-ui/themes'
 import * as Form from "@radix-ui/react-form";
 import { ToastContainer, toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-import {  useParams } from 'react-router-dom'
+// import {  useParams } from 'react-router-dom'
 
 export function NewClubForm() {
   const [club, setClub] = useState()
@@ -20,8 +20,6 @@ export function NewClubForm() {
   const [zip, setZip] = useState()
   const [website, setWebsite] = useState()
 
-  const { id } = useParams()
-
   const navigate = useNavigate()
 
   const notify = (msg: string) => toast(msg)
@@ -31,40 +29,12 @@ export function NewClubForm() {
       return await instance.get('/club')
       .then((response) => {
         setClub(response.data)
-        setClubId(response.data)
-        setEmail(response.data)
-        setName(response.data)
-        setPhone(response.data)
-        setAddress(response.data)
-        setCity(response.data)
-        setState(response.data)
-        setZip(response.data)
-        setWebsite(response.data)
       })
     }
     getClub()
   }, [])
 
-  // useEffect(() => {
-  //   const getClub = async () => {
-  //     return await instance.get(`/club/`)
-  //     .then((response) => {
-  //       setClub(club)
-  //       setClubId(club_id)
-  //       setEmail(email)
-  //       setPassword(password)
-  //       setName(name)
-  //       setPhone(phone)
-  //       setAddress(address)
-  //       setCity(city)
-  //       setState(state)
-  //       setZip(zip)
-  //       setWebsite(website)
-  //     })
-  //   }
-  //   getClub()
-  // }, [])
-
+  // const { id } = useParams()
   
   const handleClubIdChange = (event: any) => {
     setClubId(event.target.value)
@@ -128,14 +98,14 @@ export function NewClubForm() {
       website
     })
     if (resp.status == 200) {
-      notify('Successfully updated club!')
+      setClub(club)
+      notify('Successfully created new club!')
       navigate('/clubs')
     } else {
       console.log(resp.data);
     }
   }
   
-
     return (
       <Form.Root className='card container'>
           <Heading size={'3'}>Create New Club</Heading>
@@ -159,4 +129,4 @@ export function NewClubForm() {
         <ToastContainer position='top-center' />
       </Form.Root>
     )
-  }
+}
